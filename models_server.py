@@ -241,13 +241,13 @@ def load_pipes(local_deployment):
             #     "model": pipeline(task="image-classification", model=f"microsoft/beit-base-patch16-224-pt22k-ft22k"),
             #     "device": "cpu"
             # },
-            "facebook/detr-resnet-50-panoptic": {
-                "model": pipeline(
-                    task="image-segmentation",
-                    model=f"{local_models}facebook/detr-resnet-50-panoptic",
-                ),
-                "device": "cpu",
-            },
+            #"facebook/detr-resnet-50-panoptic": {
+            #    "model": pipeline(
+            #        task="image-segmentation",
+            #        model=f"{local_models}facebook/detr-resnet-50-panoptic",
+            #    ),
+            #    "device": "cpu",
+            #},
             "facebook/detr-resnet-101": {
                 "model": pipeline(
                     task="object-detection",
@@ -263,22 +263,22 @@ def load_pipes(local_deployment):
             #     "model": pipeline(task="zero-shot-object-detection", model=f"{local_models}google/owlvit-base-patch32"),
             #     "device": "cpu"
             # },
-            # "microsoft/DialoGPT-medium": {
-            #     "model": pipeline(task="conversational", model=f"microsoft/DialoGPT-medium"),
-            #     "device": "cpu"
-            # },
+             "microsoft/DialoGPT-medium": {
+                 "model": pipeline(task="conversational", model=f"microsoft/DialoGPT-medium"),
+                 "device": "cpu"
+             },
             # "bert-base-uncased": {
             #     "model": pipeline(task="fill-mask", model=f"bert-base-uncased"),
             #     "device": "cpu"
             # },
-            # "deepset/roberta-base-squad2": {
-            #     "model": pipeline(task = "question-answering", model=f"deepset/roberta-base-squad2"),
-            #     "device": "cpu"
-            # },
-            # "facebook/bart-large-cnn": {
-            #     "model": pipeline(task="summarization", model=f"facebook/bart-large-cnn"),
-            #     "device": "cpu"
-            # },
+             "deepset/roberta-base-squad2": {
+                 "model": pipeline(task = "question-answering", model=f"deepset/roberta-base-squad2"),
+                 "device": "cpu"
+             },
+             "facebook/bart-large-cnn": {
+                 "model": pipeline(task="summarization", model=f"facebook/bart-large-cnn"),
+                 "device": "cpu"
+             },
             # "google/tapas-base-finetuned-wtq": {
             #     "model": pipeline(task="table-question-answering", model=f"google/tapas-base-finetuned-wtq"),
             #     "device": "cpu"
@@ -291,29 +291,29 @@ def load_pipes(local_deployment):
             #     "model": pipeline(task="text-generation", model="gpt2"),
             #     "device": "cpu"
             # },
-            # "mrm8488/t5-base-finetuned-question-generation-ap": {
-            #     "model": pipeline(task="text2text-generation", model=f"mrm8488/t5-base-finetuned-question-generation-ap"),
-            #     "device": "cpu"
-            # },
-            # "Jean-Baptiste/camembert-ner": {
-            #     "model": pipeline(task="token-classification", model=f"Jean-Baptiste/camembert-ner", aggregation_strategy="simple"),
-            #     "device": "cpu"
-            # },
+             "mrm8488/t5-base-finetuned-question-generation-ap": {
+                 "model": pipeline(task="text2text-generation", model=f"mrm8488/t5-base-finetuned-question-generation-ap"),
+                 "device": "cpu"
+             },
+             "Jean-Baptiste/camembert-ner": {
+                 "model": pipeline(task="token-classification", model=f"Jean-Baptiste/camembert-ner", aggregation_strategy="simple"),
+                 "device": "cpu"
+             },
             # "t5-base": {
             #     "model": pipeline(task="translation", model=f"t5-base"),
             #     "device": "cpu"
             # },
-            # "impira/layoutlm-document-qa": {
-            #     "model": pipeline(task="document-question-answering", model=f"{local_models}impira/layoutlm-document-qa"),
-            #     "device": "cpu"
-            # },
-            "ydshieh/vit-gpt2-coco-en": {
-                "model": pipeline(
-                    task="image-to-text",
-                    model=f"{local_models}ydshieh/vit-gpt2-coco-en",
-                ),
-                "device": "cpu",
-            },
+             "impira/layoutlm-document-qa": {
+                 "model": pipeline(task="document-question-answering", model=f"{local_models}impira/layoutlm-document-qa"),
+                 "device": "cpu"
+             },
+            #"ydshieh/vit-gpt2-coco-en": {
+            #    "model": pipeline(
+            #        task="image-to-text",
+            #        model=f"{local_models}ydshieh/vit-gpt2-coco-en",
+            #    ),
+            #    "device": "cpu",
+            #},
             # "dandelin/vilt-b32-finetuned-vqa": {
             #     "model": pipeline(
             #         task="visual-question-answering",
