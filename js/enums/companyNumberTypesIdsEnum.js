@@ -1,0 +1,11 @@
+define([], function(){
+    var companyNumberTypesEnum = {
+        CLIA: "8C4683DD-3C70-4F80-AF5E-07F7FC666F42",
+        IATA: "842A33FA-E541-48ED-9040-0027827A49F9",
+        ABN: "04757DDB-2806-4DAC-9A3E-BF56B73B2BE4",
+        ABTA: "4242725F-92A2-4B14-91FF-3525B252AC77",
+        ATOL: "B11F91F4-6A5F-418B-93A1-4F273ABD63DF",
+        TTA: "C1E0687C-A13C-4AE8-B2B1-DE9DD362748A"
+    };
+    return companyNumberTypesEnum;
+});

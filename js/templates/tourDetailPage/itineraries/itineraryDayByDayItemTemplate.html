@@ -1,0 +1,35 @@
+<script type="text/template" id="itinerary-item-big-list">
+<div class="itinerary_row">
+    <div class="row_wrapper clearfix">
+        <div class="column col1">
+            <div class="day">
+                <%= dayText() %><span>  <%= dayNumber() %></span>
+            </div>
+        </div>
+        <div class="column col2">
+            <div class="expanded_itinerary_details clearfix">
+                <ul class="itinerary_details_list">
+                    <li class="itineraryFood" style="display:none"><span class="food_text"><%= foodText %>: </span><i class="fa fa-cutlery" aria-hidden="true"></i> <span class="meal"></span></li>
+                    <li class="itineraryTemperature" style="display:none">
+                        <span class="therma_text"><%= thermaText %>: </span>
+						  	<i class="fa fa-sun-o" aria-hidden="true"></i>
+                            <%= highText %>&nbsp;
+                            <%= highTemperature %>&deg;&nbsp;
+                            <%= lowText %>&nbsp;
+                            <%= lowTemperature %>&deg;
+                        </span>
+                    </li>
+                    <li class="itineraryUmbrella" style="display:none"><span class="umbrella_text"><%= umbrellaText %>: </span><span class="icon umbrella"><%= rainFall %>"</span></li>
+                    <li class="itinerarySupplier" style="display:none">
+                        <span class="supplier_text"><%= supplierText %>: </span>
+						  	<i class="fa fa-h-square" aria-hidden="true"></i> <%= supplierHtml() %></span>
+                    </li>
+                </ul>
+            </div>
+		  	<div class="title"><%= title() %></div>
+		  	<%= description() %>
+        </div>
+    </div>
+	<br />
+</div>
+</script>

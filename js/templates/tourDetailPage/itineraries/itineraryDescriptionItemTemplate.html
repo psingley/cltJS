@@ -1,0 +1,73 @@
+﻿<script id="itinerary-description-item" type="text/template">
+	<div class="day-accordion" data-day="<%= dayNumberData() %>">
+		<div class="day-accordion-tab">
+			<%= dayText() %> <%= dayNumber() %>
+			<% if(showSpecialEvent()) { %>
+				<em><small> - Special Event*</small></em>
+			<% } %>
+		</div>
+		<div class="day-information">
+			<h3><%= dayText() %> <%= dayNumber() %>: <%= title() %></h3>
+			<h3 class="alt"><%= title() %></h3>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="img-wrap">
+						<img src="<%= getItinImage() %>" alt="<%= getItinImageAlt() %>">
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<% if(showSpecialEvent()) { %>
+					<p><em>*<%= itinEvent.description %></em></p>
+					<% } %>
+					<p><%= description %></p>
+				</div>
+			</div>
+			<% if(supplierPresent() || mealsPresent() || showWeather()) { %>
+			<div class="row day-highlights">
+				<% if(supplierPresent()) { %>
+				<div class="col-sm-4">
+					<div class="icon-wrap">
+						<div class="icon hotel">
+							<img src="<%= hotelImg() %>" alt="hotel icon" />
+						</div>
+						<h5><%= hotelText %></h5>
+					</div>
+					<div class="hotel-image-link img-wrap" target="_blank">
+						<img src="<%= hotelImage() %>" alt="">
+					</div>
+					<h6><%= hotelName() %></h6>
+					<p><b><%= city() %></b></p>
+				</div>
+				<% } %>
+				<% if(mealsPresent()) { %>
+				<div class="col-sm-4">
+					<div class="icon-wrap">
+						<div class="icon culinary">
+							<img src="<%= culinaryImg() %>" alt="culinary icon" />
+						</div>
+						<h5><%= culinaryText %></h5>
+					</div>
+					<p><%= mealsCopy() %></p>
+				</div>
+				<% } %>
+				<% if(showWeather()) { %>
+				<div class="col-sm-4">
+					<div class="icon-wrap">
+						<div class="icon weather">
+							<img src="<%= weatherImg() %>" alt="weather icon" />
+						</div>
+						<h5><%= weatherText %></h5>
+						<% if(temperaturePresent()) { %>
+						<p><b><%= highText %> <%= highTemperature %>°</b><br /><b><%= lowText %> <%= lowTemperature %>°</b></p>
+						<% } %>
+						<% if(rainFallPresent()){ %>
+						<p><%= rainText %> <%= rainFall %>"</p>
+						<% } %>
+					</div>
+				</div>
+				<% } %>
+			</div>
+			<% } %>
+		</div>
+		</div>
+</script>

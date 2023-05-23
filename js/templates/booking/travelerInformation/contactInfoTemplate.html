@@ -1,0 +1,90 @@
+<script type="text/template" id="contact-info-template">
+    <div class="subheader clearfix">
+        <div class="left_col">
+            <%= contactInfoText %>
+        </div>
+        <div class="right_col">
+            <% if(travelerNumber != 1){ %>
+            <label>
+                <input <%= travelerInfoCopied() %> type="checkbox" class="copyInfo" />
+                <%= copyInfoText %>
+            </label>
+            <% } %>
+        </div>
+    </div>
+    <div class="pad contact_info">
+        <div class="row divIATA" style="display:none">
+            <div class="form-group col-xxs-12 col-xs-6">
+                <label>IATA Compliance Notice <br></label>
+                <span style="margin-bottom:5px">Choose from the below options regarding sharing your information directly with the airline.</span>
+                <select class="ddIATA" name="iataCode">
+                    <option value="0"></option>
+                    <option value="1">Mobile</option>
+                    <option value="2">Email</option>
+                    <option value="3">Email/Mobile</option>
+                    <option value="4">Refused</option>
+                </select>
+            </div>
+        </div>
+            <div class="row">
+                <div class="form-group col-xxs-12 col-xs-6">
+                    <label id="lblPhone"><%= phoneText %></label>
+                    <input name="phone" type="text" class="form-control phone req" value="<%= phone %>" required="required">
+                    <span class="phone errorText"></span>
+                </div>
+                <div class="form-group col-xxs-12 col-xs-6">
+                    <label class="mobiletext"><%= mobileText %></label>
+                    <input name="mobile" type="text" class="medium mobile nonreq" value="<%= mobile %>">
+                    <span class="mobile errorText"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-xxs-12 col-xs-6 em">
+                    <label id="lblEmail"><%= emailText %></label>
+                    <input name="email" type="text" class="form-control email req" value="<%= email %>" required="required">
+                    <span class="email errorText"></span>
+                </div>
+                <div class="form-group col-xxs-12 col-xs-6">
+                    <label id="lblConfirmEmail"><%= confirmEmailText %></label>
+                    <input name="confirmEmail" type="text" value="<%= email %>" class="form-control confirm_email nopaste req" required="required">
+                    <span class="confirmEmail errorText"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-xxs-12 col-xs-6 col-sm-4">
+                    <label id="lblCountry"><%= countryText %></label>
+                    <input name="ignore" type="text" class="form-control country req" value="<%= getCountryName() %>" />
+                    <input name="country" class="countryId" type="hidden" value="<%= getCountryId() %>" />
+                    <span class="country errorText"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label id="lblAddress"><%= address1Text %></label>
+                <input name="address1" type="text" class="form-control address_1 req" value="<%= address1 %>" required="required">
+                <span class="address1 errorText"></span>
+            </div>
+            <div class="form-group">
+                <label><%= address2Text %></label>
+                <input type="text" name="address2" class="form-control address_2" value="<%= address2 %>">
+            </div>
+            <div class="row">
+                <div class="form-group col-xs-12 col-sm-4">
+                    <label id="lblCity"><%= cityText %></label>
+                    <input name="city" type="text" class="form-control city req" value="<%= city %>" required="required">
+                    <span class="city errorText"></span>
+                </div>
+                <div class="form-group col-xs-6 col-sm-4">
+                    <label id="lblState"><%= stateText %></label>
+                    <input name="ignore" type="text" class="form-control state req" value="<%= getStateName() %>" />
+                    <span class="state errorText"></span>
+                    <input type="hidden" class="stateId" value="<%= getStateId() %>" />
+
+                </div>
+                <div class="form-group col-xs-6 col-sm-4">
+                    <label id="lblZip"><%= zipCodeText %></label>
+                    <input name="zipCode" type="text" class="small zipcode req" value="<%= zipCode %>">
+                    <span class="zipCode errorText"></span>
+                </div>
+            </div>
+        </div>
+</script>

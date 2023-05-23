@@ -1,0 +1,21 @@
+﻿<script type="text/template" id="itinerary-day-item-template">
+	<div class="day" data-day="<%= dayNumberData() %>">
+		<div class="img-wrap">
+            <div class="day-img" style="background: url('<%= getItinImage() %>') center center;" title="<%= getItinImageAlt() %>"></div>
+			<div class="screen"><span><%= city() %></span></div>
+			<% if(showPrePostLabel()){ %> 
+			<div class="label-green"><%= prePostLabel() %></div>
+			<% } %>
+			<% if(showSpecialEvent()) { %>
+			<div class="label-green"><%= specialEventText %></div>
+			<% } %>
+		</div>
+		<% if(showSpecialEvent()) { %>
+		<div class="special-event-description">
+			<h3 class="special-title"></h3>
+			<div class="special-content"></div>
+		</div>
+		<% } %>
+        <div class="day-carousel--text"><%= dayText() %> <%= dayNumber() %></div>
+	</div>
+</script>

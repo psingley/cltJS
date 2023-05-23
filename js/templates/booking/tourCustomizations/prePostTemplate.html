@@ -1,0 +1,23 @@
+<script type="text/template" id="extension-template">
+	<label>
+		<div class="input_col">
+			<input data-id="<%= id %>" type="checkbox" class="hotel_checkbox packageUpgrade_checkbox">
+		</div>
+		<div class="input_col description_col"><%= titleText() %></div>
+	</label>
+
+	<div class="input_col rooms_col">
+		<% if(!isTransfer()) {%>
+		<span class="noOfRooms"><%= noOfRooms %></span> <%= roomsText() %>
+		<% } %>
+	</div>
+	<div class="input_col price_col">$ <span class="ga-price-col"><%= price %></span></div>
+
+	<% if(!isTransfer()) {%>
+	<div class="input_col nights_col">
+		<select class="numberOfNights ga-multiple-col">
+		</select>
+	</div>
+	<% } %>
+
+</script>

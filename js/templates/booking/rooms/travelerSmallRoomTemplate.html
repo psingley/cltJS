@@ -1,0 +1,33 @@
+<script type="text/template" id="traveler-template">
+    <div class="col-xs-12 aTraveler">
+        <div class="row">
+            <h4 class="col-xs-12 guestName" style="font-weight:600; color:#336; margin-bottom:-10px"></h4>
+            <div class="col-xs-5 input_row">
+                <h4><span style="color:#B92E45">*</span>First Name</h4>
+                <input class="firstTravelerName" tabindex="<%=travelerIndex %>" type="text" data-id="<%= id %>" required="required" autocomplete="off" />
+                <span class="firstTravelerName" style="color:red; margin-bottom:10px" data-message="Please enter your first name"></span>
+            </div>
+            <div class="col-xs-5 input_row">
+                <h4><span style="color:#B92E45">*</span>Last Name</h4>
+                <input class="lastTravelerName" tabindex="<%=travelerIndex %>" type="text" data-id="<%= id %>" required="required" autocomplete="off" />
+                <span class="lastTravelerName" style="color:red; margin-bottom:10px" data-message="Please enter your last name"></span>
+            </div>
+            <div class="col-xs-2 input_row price">
+                <h4 class="<%= passengerType.name %>"><%= passengerType.name %> </h4><%= passengerType.name %> </h4>
+                <span style="margin-top:5px">
+                    <span class="showPrice"><%= personPrice.toString().formatPrice() %> <%= currencyCode %></span>
+                    <a href="#" data-cid="<%= cid %>" class="delete"> &times;</a>
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <h4 class="col-xs-12"><div><span style="color:#B92E45">*</span>Email</div></h4>
+            <div class="input_row col-xs-10">
+                <input class="emailTravelerName" style="border:1px solid #b2b8bd; padding:6px 5px; font-weight: bold;" tabindex="<%=travelerIndex %>"
+                       type="email" data-id="<%= cid %>" required="required" autocomplete="off">
+
+                <span class="emailTravelerName" style="color:red; margin-bottom:10px" data-message="Please provide an email address" data-email="Please provide a valid email address"></span>
+            </div>
+        </div>
+    </div>
+</script>

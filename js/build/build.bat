@@ -1,0 +1,1 @@
+node web\Collette.Web\js\build\r.js -o  web\Collette.Web\js\build\build.json

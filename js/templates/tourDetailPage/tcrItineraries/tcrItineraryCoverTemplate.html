@@ -1,0 +1,23 @@
+﻿<div id="tcr-itinerary-cover">
+    <!-- ko if: isExtension -->
+    <button class="back-btn" id="returnMainTour" data-bind="click: $parent.showTimeline">
+        <i class="fa fa-arrow-left"></i><span>Return to Main Tour</span>
+    </button>
+    <div class="tcr-extension-price">
+        <div class="mode-label" data-bind="text : currentMode "></div>
+        <div class="label-small">From</div>
+        <div>
+            <span class="price" data-bind="text : price "></span>
+            <span class="pptext" data-bind="text : pptext "></span>
+        </div>
+    </div>
+    <!-- /ko -->
+    <img loading="lazy" class="cover-frame" id="cover-frame" data-bind="attr: { src: coverImageUrl }" />
+    <div class="tcr-tooltip-hide" id="prePostTooltip">
+        <div class="tooltip-inner">
+            *Optional Extension Available as well as additional night stays-if no pre-tour then pre-night
+        </div>
+        <div class="tooltip-arrow"></div>
+        <div class="tooltip-close"></div>
+    </div>
+</div>

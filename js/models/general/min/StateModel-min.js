@@ -1,0 +1,1 @@
+define(["jquery","underscore","backbone"],function($,e,o){var d=o.Model.extend({defaults:{id:"",name:"",code:"",neoId:0,pivotalId:0,autocompleteSourceValue:""}});return d});

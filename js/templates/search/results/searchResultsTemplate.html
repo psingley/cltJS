@@ -1,0 +1,138 @@
+﻿<script type="text/template" id="searchResult-template">
+    <div class="inner">
+        <% if(isExplorationsStyle()){ %>  <div style="border-color: #132f3b !important; padding-left: 0.5px;" class="collette-tour-card col-2">
+    <% } else { %>  <div class="collette-tour-card col-2"> <% } %>
+    <div class="collette-tour-card__image" style="background-image: url('<%= imageUrl %>');" aria-label="<%= title %>">
+        <% if(isExplorationsStyle()){ %>
+        <div class="explorations-banner d-flex">
+            <strong class="explorations-banner__copy">
+                <span>
+                    SMALL GROUP
+                    <p class="text-uppercase">Explorations</p>
+                </span>
+            </strong>
+        </div>
+        <% } %>
+
+        <div class="card-pricing-banner">
+            <% if(showOffers()) { %>
+            <span class="card-pricing-banner__savings"> <%= saveUptoText %> <strong> <%= maxOfferPrice() %> </strong></span>
+            <% } %>
+
+            <div class="card-pricing-banner__price">
+                <small class="text-center">From</small>
+                <h4 class="card-price text-center" style="color: #388071">
+                    <strong><%= minPrice() %></strong>
+                    <small style="color: #707070"><%= freeFormTextPP %><sup>*</sup></small>
+                </h4>
+                <% if(showStrikeOutPrice() && totalPrice() != null) { %>
+                <div class="card-pricing-banner__price-offer">
+                    <strike><em><%= totalPrice() %><span><%= freeFormTextPP %></span></em></strike>
+                </div>
+                <% } %>
+            </div>
+        </div>
+        <% if(showReviews()) { %>
+        <div class="card-ratings-banner d-flex">
+            <div class="card-ratings-banner__copy">
+                <span class="card-ratings-number">
+                    <img style="width:7rem;" src="<%= feefoSearchImg %>" /> <%= feefoStars %>
+                </span>
+            </div>
+        </div>
+        <% } %>
+
+    </div>
+
+    <div class="collette-tour-card__body">
+        <div class="card-body-tags" style="max-height: 3rem">
+            <% if(isNewTour()) { %>
+            <div class="new-tour">
+                <strong class="new-tour__inner">NEW TOUR</strong>
+            </div>
+            <% } %>
+            <small class="tour-meta">
+                <!-- Multiple tags can go here -->
+                <% var tags = showTags();
+                if(tags != null && tags.length > 0) {
+                _.each(tags, function (badge) { %>
+                <span class="tour-style <%= badge.cssClass %>">
+                    <strong><%= badge.title %></strong>
+                </span>
+                <% });
+                } %>
+            </small>
+        </div>
+        <div class="card-body-titles" style="height:7.1rem !important">
+            <h4 name="<%= title %>" class="card-body-titles__main">
+                <%= title %>
+            </h4>
+            <h4 class="card-body-titles__subtitle">
+            </h4>
+        </div>
+        <h4 class="card-body-dates">
+            <% if(numberOfDaysMin === numberOfDaysMax || numberOfDaysMin == 0){ %>
+            <span><%= numberOfDaysMax%> Days</span>
+            <% } else { %>
+            <span> <%= numberOfDaysMin%>-<%= numberOfDaysMax%> Days</span>
+            <% } %> | <%= getYearText() %>
+        </h4>
+
+        <!--<% var cities = getCities() %>
+        <% if(cities != '' && cities != undefined) { %>
+        <div class="card-body-locations ps-3 d-flex flex-wrap" style="height: 6rem;overflow:hidden;">
+            <% for(var i=0; i< cities.length; i++) { %>
+            <p>
+                <span><%= cities[i].title%></span>
+                <% if(i != cities.length -1) { %>
+                <span>&nbsp;•&nbsp;</span>
+                <% } %>
+            </p>
+            <% } %>
+        </div>
+        <% 	} %>-->
+        <% var highlights = getHighlights() %>
+        <% if(highlights != '' && highlights != undefined) { %>
+        <div class="card-body-locations d-flex flex-wrap" style="height: 6rem;overflow:hidden;">
+            <% for(var i=0; i< highlights.length; i++) { %>
+            <p>
+                <span><%= highlights[i]%></span>
+                <% if(i != highlights.length -1) { %>
+                <span>&nbsp;•&nbsp;</span>
+                <% } %>
+            </p>
+            <% } %>
+        </div>
+        <% 	} %>
+
+        <div style="height:7rem; overflow:hidden;">
+            <% var exts = showExtensions();
+            if(exts != null && exts != '') { %>
+            <div class="card-body-extensions">
+                <p role="alert" class="p-1">
+                    <%= exts %>
+                </p>
+            </div>
+            <% } %>
+        </div>
+        <!--<hr class="mx-3 mt-5">-->
+        <div class="d-flex justify-content-around pt-2 card-button-wrapper">
+            <button class="request_quote_button btn btn-secondary align-self-center" data-bs-target="#request-quote-modal" data-bs-toggle="modal" data-tourtitle="<%= title %>"
+                    data-tourid="<%= tourId %>" data-tourimage="<%= imageUrl %>" data-toursummary="<%= summary %>"
+                    style="width: 118.6px;
+                                   height: 42px; border-radius: 21px; font-size: 11px; font-weight: bold">
+                Get a Quote
+            </button>
+
+            <a href="<%= tourDetailUrl %>"
+               class="btn btn-primary align-self-right"
+               style="width: 118.6px; border-radius: 21px; font-size: 11px; font-weight: bold; padding-top: 14px; ">
+                View Tour
+            </a>
+
+        </div>
+    </div>
+</div>
+
+</div>
+</script>

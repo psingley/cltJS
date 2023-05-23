@@ -1,0 +1,36 @@
+<script type="text/template" id="tour-offer-template">
+	<div class="row">
+		<div class="col-sm-8">
+			<h3><%= bookEarlyAndSaveText %></h3>
+			<p class="big-p"><%= earlyBookingSummary() %></p>
+			<button class="btn btn-primary BookNowButton_Dates" data-toggle="modal" data-target="#ebb-modal">
+				<%= offerDetailsText %>
+			</button>
+		</div>
+		<div class="col-sm-4">
+			<div class="offer width-100 help" data-toggle="modal" data-target="#ebb-modal">
+				<div class="tags">
+					<% if (daysLeft() <= daysThreshold ) { %>
+					<div class="tag deal">
+						<% if (daysLeft() >= 1 ) { %>
+						<span id="earlyBookingDaysLeft"><%= daysLeft() %></span> <%= daysLeftText() %>
+						<% } else { %>
+						<%= expiresTodayText %>
+						<% } %>
+					</div>
+					<% } %>
+				</div>
+				<div class="offer-title">
+					<div class="offer-save">save <span class="offer-up-to">up to</span></div>
+					<div class="offer-amount"><span class="currency"><%= currencySymbol %></span><span id="earlyBookingUpTo"><%= formattedOfferRate() %></span></div>
+					<div class="offer-per"><%= perPersonText %><sup>*</sup></div>
+					<div class="offer-detail"><%= whenYouBookByText %> <%= expireDate() %></div>
+				</div>
+				<div class="offer-code">
+					<div><%= useOfferCodeText %></div>
+					<div class="code"><%= earlyBookingBonus.vanityCode() %></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</script>

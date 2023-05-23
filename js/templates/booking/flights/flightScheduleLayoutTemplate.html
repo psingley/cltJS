@@ -1,0 +1,103 @@
+<script type="text/template" id="flight-schedule-layout-template">
+	<div class="option">
+		<div class="depart_row1 clearfix">
+			<div class="sort_by_col">
+				<div class="input_row">
+					<input name="flight" data-cid="<%= scheduleCid %>" type="radio">
+				</div>
+			</div>
+
+			<div class="price_col">
+				<div class="details" title="<%= fareTypeDescription %>" data-toggle="tooltip" data-placement="top"><%= fareTypeName %></div>
+				<div class="price" data-price="<%= flightPrice %>" data-rmprice="<%= rmPrice %>"><%= totalPriceFormatted %><span><%= ppText %></span></div>
+			</div>
+			<% var showSeparator = false;
+			_.each(flightGroups, function(flightGroup) {
+				if (showSeparator) { %>
+					<hr/>
+				<% }
+				for(var i = 0; i < flightGroup.flights.length; i++) {
+					var flight = flightGroup.flights.models[i]; %>
+
+					<% if (i === 0) { %>
+						<div class="show-at-580">
+							<div class="stops_col">
+								<div class="stops"><span><%= getTotalStops(flightGroup) %></span> <span><%= durationText %>: <%= getDurationTimeFormatted(flightGroup) %></span></div>
+							</div>
+						</div>
+					<% } %>
+
+				<div class="flight-details-wrapper">
+					<div class="airline_col">
+						<div class="airline"><%= getAirlineDisplayName(flight)%> <%= getFlightNumberText(flight)%></div>
+					</div>
+
+					<div class="depart_row2">
+						<div class="baggageAndOperatingCarriers">
+							<div class="operatingCarriers"><%= getOperatedByFlightDetailText(flight)%></div>
+						</div>
+					</div>
+
+					<div class="departure_col">
+						<div class="dateText"><%= leaveText %> <%= getDepartureDateFormatted(flight) %></div>
+						<div>
+							<span class="time"><%= getDepartureTimeFormatted(flight) %></span>
+							<span class="airportCode" title="<%= flight.get('departureAirport').code %> <%= flight.get('departureAirport').name %>" data-toggle="tooltip" data-placement="top">
+								<%= flight.get('departureAirport').code %>
+							</span>
+						</div>
+					</div>
+
+					<div class="arrival_col">
+						<div class="dateText"><%= arriveText %> <%= getArrivalDateFormatted(flight) %></div>
+						<div>
+							<span class="time"><%= getArrivalTimeFormatted(flight) %></span>
+							<span class="airportCode" title="<%= flight.get('arrivalAirport').code %> <%=flight.get('arrivalAirport').name %>" data-toggle="tooltip" data-placement="top">
+								<%= flight.get('arrivalAirport').code %>
+							</span>
+						</div>
+					</div>
+
+					<% if (i === 0) { %>
+						<div class="stops_col hide-at-580">
+							<div class="stops"><span><%= getTotalStops(flightGroup) %></span></div>
+						</div>
+						<div class="duration_col hide-at-580">
+							<div class="time"><span><%= durationText %></span><span><%= getDurationTimeFormatted(flightGroup) %></span></div>
+						</div>
+					<% } %>
+
+					<div class="type_row">
+						<span class="od_class"><%= getClassOfService(flight) %></span>
+						<span class="od_type"><%= getEquipment(flight)%></span>
+					</div>
+
+					<div class="depart_row2">
+						<div class="baggageAndOperatingCarriers">
+							<div id="baggageRegion">
+								<strong><%= baggageInformationText %>:</strong>
+								<span class="baggageInfoUrls">
+									<%
+										var operatedByAirline = getOperatedByAirline(flight);
+										var airline = getAirline(flight);
+										if(!Boolean(operatedByAirline === null)) { %>
+											<a href="<%= operatedByAirline.url %>" target="_blank"><%= operatedByAirline.name %></a>
+										<%}
+										else if(!Boolean(airline === null)){%>
+											<a href="<%= airline.url %>" target="_blank"><%= airline.name %></a>
+										<%} %>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<% }
+				showSeparator = true;
+			}) %>
+		</div>
+
+		<div class="clearfix flightContinueSection" style="display:none;">
+			<button class="btn btn-primary button-flightContinue" href="#" data-toggle="collapse" aria-expanded="false" aria-controls="flight-details"><%= continueText %></button>
+		</div>
+	</div>
+</script>

@@ -1,0 +1,101 @@
+<script type="text/template" id="tour-date-row-template">
+    <% if(isBooking) {%>
+        <td class="radio_col">
+                <input type="radio" class="date" name="date" startdate="<%=startDateHidden%>" enddate="<%=endDateHidden%>" value="<%=id%>" data-package-neoid="<%=packageneoid%>" <% if(soldOut || call) { %> disabled="disabled"<%}%> >
+        </td>
+    <% } %>
+
+        <td class="dates_col">
+			<div class="date"><%=dateText%></div>
+			<% if(isAgent() && guaranteed && call && callText()) {%>
+					<div class="date-alert call-for-details"><%=guaranteedText%>, <%=callText()%></div>
+			<% }
+			else if(guaranteed && (isAgent() || showGuaranteedForConsumers())) {%>
+					<div class="date-alert call-for-details"><%=guaranteedText%></div>
+			<% }
+			else if(showAlert) {%>
+					<div class="date-alert call-for-details"><%=guaranteedText%></div>
+			<% }
+			else if(call && callText()) {%>
+					<div class="date-alert call-for-details"><%=callText()%></div>
+			<% } else if(hideBookNow && callText()) {%>
+					<div class="date-alert call-for-details"><%=callText()%></div>
+			<% } %>
+			<% if (soldOut) {%>
+				<div class="date-alert sold-out"><%=soldOutText%></div>
+			<% } else if (seatsRemainingText != "" && !call){ %>
+				<div class="date-alert danger">
+						<i class="fa fa-warning"></i><%=seatsRemainingText%>
+				</div>
+			<% } %>
+		</td>
+        <td class="date_events_col">
+            <% if(events != null && events.length > 0) {
+                _.each(events, function(event){ %>
+                    <div class="tour-event" data-toggle="popover" data-title="<%= event.title %>" data-content="<%= event.description %>">
+                        <img src="<%= event.icon %>" alt="<%= event.alt %>"/>
+                    </div>
+                <% });
+            } %>
+        </td>
+        <td class="discount_price_col">
+        <% if(isCaa) {%>
+            <span class="discountedPriceCAA"><%= priceText() %></span>
+        <% } else { %>
+            <span class="discountedPrice"><%= priceText() %></span>
+        <% } %>
+
+        <% if(showCrossedOut()) { %>
+            <span class="crossout"><%=crossedOutPriceText()%></span>
+        <%}%>
+        </td>
+        <td class="message_col">
+                        <% if(showAlert) {%>
+                            <div class="date-alert">
+                                <div class="tag <%=badgeCssClass()%> no-flag" data-toggle="modal" data-target="#<%=modalWindowName()%>" style="<%=badgeStyle()%>">
+                                    <i class="fa <%=badgeIconCssClass()%>"></i><%=offerTypeName()%>
+                                </div>
+                            </div>
+                        <% } %>
+                        <% if(showAlertSubtle) {%>
+                                <div class="date-alert subtle" data-toggle="modal" data-target="#<%=modalWindowName()%>">
+                                        <span class="help">
+                                                <i class="fa fa-warning"></i>
+                                                <%= alertSubtleText()%>
+                                        </span>
+                                </div>
+                        <% } %>
+
+        </td>
+
+    <% if(!isBooking) {%>
+        <td class="button_col">
+                <% if(soldOut) {%>
+                        <a data-url="<%if(isBookingEngineAvailable){%><%=bookingPageUrl%><% } %>" class="btn btn-subtle btn-sm"><%=soldOutText%></a>
+                <% }
+                else { %>
+                        <a id="viewItineraryButton" class="btn btn-info btn-sm scroll-to itinerary-button" href="" data-offset="60" startdate="<%=startDateHidden%>" enddate="<%=endDateHidden%>" value="<%=id%>">
+                            <%=viewItineraryText%>
+                        </a>
+
+                        <div id="selectedItineraryButton" class="btn btn-success btn-sm scroll-to itinerary-button" style="display: none;" href="" data-offset="60" startdate="<%=startDateHidden%>" enddate="<%=endDateHidden%>" value="<%=id%>">
+                            <i class="fa fa-check"></i> <%=selectedItineraryText%>
+                        </div>
+
+                <% if(isBookingEngineAvailable && !call && !hideBookNow && !isClientBaseBooking()) {%>
+                <a class="btn btn-primary btn-sm BookNowButton_Dates" data-url="<%=bookingPageUrl%>" target="_blank" href="<%=bookingPageUrl%>">
+                    <%=bookNowText%>
+                </a>
+                <% } else if(isBookingEngineAvailable && !call && !hideBookNow && isClientBaseBooking()) {%>
+                <a class="btn btn-primary btn-sm BookNowButton_Dates" data-url="<%=bookingPageUrl%>" href="<%=bookingPageUrl%>">
+                    <%=bookNowText%>
+                </a>
+                <% } else if(hideBookNow){%>
+                <button class="btn btn-primary hidden-xs hidden-sm BookNowButton_StickyNav call_now_button" data-toggle="modal">
+                    <%=callNowText%>
+                </button>
+                <% } %>
+                <% } %>
+</td>
+    <% } %>
+</script>

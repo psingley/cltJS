@@ -1,0 +1,10 @@
+<script id="agent-template" type="text/template">
+    <span class="name"><%= name%></span>
+    <span><%=addressLine1%></span>
+    <span><%=addressLine2%></span>
+    <span><%=phoneText%>:<%=phone%></span>
+    <span class="agentFinderEmail"><%=emailText%>:<%=email%></span>
+    <% if(distance != ""){ %>
+        <span><i><%=distanceText%>: <%=distance%> <%=unitOfLength%></i></span>
+    <% } %>
+</script>

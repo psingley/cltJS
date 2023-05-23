@@ -1,0 +1,33 @@
+({
+    baseUrl: '../',
+    preserveLicenseComments: false,
+    dir: '../../Scripts',
+    findNestedDependencies: "true",
+    mainConfigFile: '../main.js',
+    modules: [
+        {
+            name: 'main',
+            include: ['main', 'requireLib']
+        },
+        {
+            name: "apps/booking",
+            include: ["apps/booking"],
+            exclude: ["main"]
+        },
+        {
+            name: 'apps/tour',
+            include: ['apps/tour'],
+            exclude: ["main"]
+        },
+        {
+            name: 'apps/experience',
+            include: ['apps/experience'],
+            exclude: ["main"]
+        }
+    ],
+    skipDirOptimize: true,
+    paths: {
+        requireLib: 'libs/require/require'
+    },
+    include: 'requireLib'
+})

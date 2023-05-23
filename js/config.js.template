@@ -1,0 +1,10 @@
+define([
+    'jquery',
+    'underscore'
+], function($, _){
+    var config = {
+        DEBUG_MODE : ${DebugMode},
+        AAA_PROMO_CODE: 'M222-AX1-918'
+    };
+    return config;
+});

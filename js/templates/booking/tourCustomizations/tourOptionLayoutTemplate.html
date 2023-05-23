@@ -1,0 +1,19 @@
+<script type="text/template" id="tour-option-template">	
+	<% if (showOptionalHeader) { %>
+		<p style="font-weight: normal"><b><%= copyHeader %></b><br><%= copyText %></p>
+	<% } %>
+
+    <div>
+        <div class="input_col checkbox"></div>
+        <div class="input_col description_col"><label><%= descriptionText %></label></div>
+        <div class="input_col image_col"></div>
+        <div class="input_col price_col"><label><%= pricePpText %></label></div>
+        <div class="input_col persons_col"><label><%= personsText %></label></div>
+    </div>
+
+    <div id="preTourOptionList">
+    </div>
+    <div id="tourOptionList"></div>
+    <div id="postTourOptionList"></div>
+
+</script>

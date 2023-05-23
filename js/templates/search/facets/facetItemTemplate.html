@@ -1,0 +1,19 @@
+<script id="facet-item-template" type="text/template">
+	
+	<% var isStarsFacet = starsFacet(); %>
+	<% if(starsFacet()) { %>
+		<% if(showReviews()) { %>
+			<input type="checkbox" value="<%= name %>" id="<%= name %>">
+				<% for(var i=1; i<= name ; i++) {  %>
+					<i class="fa fa-star star-rating"></i>
+				<% } %>
+			<span class="filter-results"><%= count %></span>
+		<% } %>
+	<% } else { %>
+		<input type="checkbox" value="<%= name %>" id="<%= name %>">
+		<span class="filter-checkbox-text"><%= badgeTitle() %></span>
+		<span class="filter-results"><%= count %></span>
+	<% } %>
+
+
+</script>

@@ -1,0 +1,37 @@
+<script type="text/template" id="extension-prepost-template">
+    <!--    <div class="no_first_col">
+            <div class="input_col description_col"><img src="img/holder_customization_image.png"></div>
+        </div>-->
+    <div>
+        <label>
+            <div class="input_col">
+                <input data-id="<%= id %>" class="packageUpgrade_checkbox" type="checkbox">
+            </div>
+            <div class="input_col description_col">
+                <span><%= contractName %></span>
+
+                <p><%= description %></p>
+            </div>
+        </label>
+
+        <div class="input_col rooms_col"><span class="noOfRooms"><%= noOfRooms %></span> <%= roomsText() %></div>
+        <div class="input_col price_col">$<span class="ga-price-col"><%= price %></span></div>
+        <div class="input_col nights_col"><!--<%= numberOfNights %> <%= nightsIncludedText %>--></div>
+    </div>
+	<div class="select_row">
+		<div>
+			<label>
+				<div class="input_col">
+					<input data-id="{D4CB4133-1F96-48DD-93DE-C139118BA8D8}" type="checkbox" class="packageUpgrade_checkbox" disabled="" style="visibility: hidden;">
+				</div>
+
+				<div class="input_col description_col">
+					<span><%= additionalFeesText() %></span>
+				</div>
+				<div class="input_col rooms_col">
+				</div>
+				<div class="input_col"><%= getPrice() %></div>
+			</label>
+		</div>
+	</div>
+</script>

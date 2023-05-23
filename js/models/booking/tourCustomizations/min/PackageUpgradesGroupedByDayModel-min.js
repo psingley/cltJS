@@ -1,0 +1,1 @@
+define(["jquery","underscore","backbone","collections/booking/tourCustomizations/BookingPackageUpgradeCollection"],function($,e,o,n){var a=o.Model.extend({defaults:{dayNumber:0,packageUpgrades:new n,description:""}});return a});

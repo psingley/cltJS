@@ -1,0 +1,153 @@
+<script type="text/template" id="tour-extension-template">
+    <div class="carousel-accordion--img">
+        <img src="<%= getImageUrl() %>" alt="<%= getAltTag() %>">
+    </div>
+    <div class="carousel-accordion--desc">
+        <div class="carousel-accordion--title"><%= formattedTitle %></div>
+        <% if(showPrice()) { %>
+        <div class="carousel-accordion--sub-title"><%= formattedPrice %> <%= ppText() %></div>
+        <% if(disclaimer != null) { %>
+        <div class="carousel-accordion--sub-title"><%= disclaimer %></div>
+        <% } } %>
+
+        <% if(itineraries != null)
+        {
+        var numBreakfast = 0;
+        var numLunch = 0;
+        var numDinner = 0;
+        var numDays = itineraries.length;
+        var numNights = numDays-1;
+        %>
+
+        <% for(var i = 0; i < itineraries.length; i++)
+        {
+        var breakfast = itineraries[i].breakfast;
+        var lunch = itineraries[i].lunch;
+        var dinner = itineraries[i].dinner;
+        if( breakfast ) {
+        numBreakfast++;
+        }
+        if( lunch ) {
+        numLunch++;
+        }
+        if( dinner ) {
+        numDinner++;
+        }
+        }%>
+
+        <%
+        if (numBreakfast != null) {
+        var breakfastText = (numBreakfast == 1) ? "Breakfast" : "Breakfasts";
+        }
+        if (numLunch != null) {
+        var lunchText = (numLunch == "1") ? "Lunch" : "Lunches";
+        }
+        if (numDinner != null) {
+        var dinnerText = (numDinner == "1") ? "Dinner" : "Dinners";
+        }
+        if (numDays != null) {
+        var dayText = (numDays == "1") ? "Day" : "Days";
+        }
+        if (numNights != null) {
+        var nightText = (numNights == "1") ? "Night" : "Nights";
+        }
+        %>
+
+        <div class="detailhighlights">
+            <div class="col-sm-4 col-xs-6 column-highlight">
+                <div class="highlight">
+                    <img src="<%= StayIcon %>" alt="Calendar Icon">
+                    <div><strong><%= StayText %></strong></div>
+                    <div id="highlight-days"><%= dayCount() %></div>
+                    <div id="highlight-nights"><%= nightCount() %></div>
+                </div>
+            </div>
+            <div class="col-sm-4 col-xs-6 column-highlight">
+                <div class="highlight">
+                    <img src="<%= MealsIcon %>" alt="Culinary Icon">
+                    <div><strong><%= MealsText %></strong></div>
+                    <div class="bold" id="highlight-totalMeals"></div>
+                    <% if(numBreakfast != "0"){%>
+                    <div id="te-highlight-breakfasts"><%= numBreakfast %> <%= breakfastText %></div>
+                    <%} %>
+                    <% if(numLunch != "0"){%>
+                    <div id="highlight-lunch"><%= numLunch %> <%= lunchText %></div>
+                    <%} %>
+                    <% if(numDinner != "0"){%>
+                    <div id="highlight-dinners"><%= numDinner %> <%= dinnerText %></div>
+                    <%} %>
+                </div>
+            </div>
+            <div class="col-sm-4 col-xs-6 column-highlight">
+                <div class="highlight">
+                    <!-- ToDo Extension Style -->
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-accordion--text">
+            <% for(var i = 0; i < itineraries.length; i++)
+            {%>
+            <div class="itinerary_row">
+                <div class="row_wrapper clearfix">
+                    <div class="column col1">
+                        <div class="day">
+                            Day <span>  <%= itineraries[i].dayNumber %></span>
+                        </div>
+                    </div>
+                    <div class="column col2">
+                        <%  var meal = "";
+                        var breakfast = itineraries[i].breakfast;
+                        var lunch = itineraries[i].lunch;
+                        var dinner = itineraries[i].dinner;
+                        if( breakfast && lunch && dinner ) {
+                        meal = "Breakfast, Lunch & Dinner";
+                        }
+                        else if(breakfast && lunch && ! dinner){
+                        meal = "Breakfast & Lunch";
+                        }
+                        else if(breakfast && !lunch && dinner){
+                        meal = "Breakfast & Dinner";
+                        }
+                        else if(!breakfast && lunch && dinner){
+                        meal = "Lunch & Dinner";
+                        }
+                        else if(!breakfast && !lunch && dinner){
+                        meal = "Dinner";
+                        }
+                        else if(breakfast && !lunch && !dinner){
+                        meal = "Breakfast";
+                        }
+
+                        if(meal != "") {%>
+
+                        <div class="expanded_itinerary_details clearfix">
+                            <ul class="itinerary_details_list">
+                                <li class="itineraryFood"><i class="fa fa-cutlery" aria-hidden="true"></i> <span class="meal"><%= meal %></span></li>
+                            </ul>
+                        </div>
+                        <% } %>
+                        <div class="title"><%= itineraries[i].title %></div>
+                        <%= itineraries[i].description %>
+                    </div>
+                </div>
+                <br />
+            </div>
+            <% } %>
+        </div>
+
+        <div class="carousel-accordion--note">
+            <%= notes %>
+        </div>
+
+            <% }
+            else { %>
+            <div class="carousel-accordion--text"> <%= description %> </div>
+            <%   } %>
+
+            <button class="btn btn-primary" data-button="details" type="button"><%= extensionDetailsText %><span data-span="extension-details" class="arrow down"></span></button>
+
+
+        </div>
+
+</script>

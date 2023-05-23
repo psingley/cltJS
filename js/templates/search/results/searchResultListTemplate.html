@@ -1,0 +1,37 @@
+<script id="tour-results-template" type="text/template">
+	<div class="<%= columnSize() %>" data-mainSection="">
+		<div class="tour-search-results d-flex flex-wrap justify-content-center justify-content-lg-start" id="searchResult">
+		</div>
+		<!--<div class="allPricesIn"><span class="currency"><%= allPricesAreIn() %></span></div>-->
+
+		<ul id="thepager" style=" text-align: center;"></ul>
+		<div class="pagedResults">
+			<a href="#" class="grey_block_arrow" id="viewMoreText" style="display: none"></a>
+		</div>
+	</div>
+	<% if(isTourDetailButtonsExist) { %>
+	<div class="col-sm-6 col-md-5 col-lg-4" data-tourDetails="">
+		<div class="active-tour-details-container">
+			<div class="active-tour-details modal fade affix-top">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<header class="tour-details-header modal-header">
+							<button type="button" class="close" data-toggle="modal" data-target=".active-tour-details"><span aria-hidden="true">X</span><span class="sr-only"><%= closeText %></span></button>
+							<h4 class="modal-title"><a href="#"></a></h4>
+						</header>
+						<div class="modal-body scroll">
+							<div class="active-tour-details-content">
+								<div class="padded">
+									<p class="big-p"><%= learnMoreText %></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<% } %>
+
+</script>
+

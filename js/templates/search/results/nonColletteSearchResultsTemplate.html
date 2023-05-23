@@ -1,0 +1,201 @@
+﻿<script type="text/template" id="searchResult-template">
+    <div class="inner">
+        <!-- The next like has a class of "has-offer" that
+        should be only conditionally applied if in
+        fact the tour has an offer -->
+        <div class="tour-body row no-gutter">
+            <div class="tour-image-container col-sm-5">
+                <a href="<%= tourDetailUrl %>" class="tour-image" style="background-image: url('<%= imageUrl %>');" aria-label="<%= title %>"></a>
+                <!--  BEGIN OFFER DETAILS AREA  -->
+                <% if(showOffers()) { %>
+                <div class="offer-ribbon">
+                    <!--<div class="offer-icon"><i class="fa fa-percent"></i></div>-->
+                    <a href="<%= tourDetailUrl %>" style="color: inherit;">
+                        <div class="offer-info"><%= saveUptoText %> <span class="the-offer"><%= maxOfferPrice() %></span></div>
+                    </a>
+                    <!--<div class="offer-details"><%= offerDescription() %></div>-->
+                </div>
+                <% } %>
+                <!-- END OFFER DETAILS AREA -->
+            </div>
+            <div class="col-sm-7">
+                <div class="row no-gutter">
+                    <div class="col-xs-8 full-width-xs">
+                        <header class="tour-header">
+                            <h3 class="tour-title"><a href="<%= tourDetailUrl %>" name="<%= title %>"><%= title %></a></h3>
+                            <small class="tour-meta">
+                                <!-- Multiple tags can go here -->
+                                <% var tags = showTags();
+                                if(tags != null && tags.length > 0) {
+                                _.each(tags, function (badge) { %>
+                                <span class="tour-style <%= badge.cssClass %>">
+                                    <i class="fa fa-tag"></i>
+                                    <strong><%= badge.title %></strong>
+                                </span>
+                                <% });
+                                } %>
+                                <% if(numberOfDaysMin === numberOfDaysMax || numberOfDaysMin == 0){ %>
+                                <span><i class="fa fa-calendar"></i> <%= numberOfDaysMax%> Days</span>
+                                <% } else { %>
+                                <span><i class="fa fa-calendar"></i> <%= numberOfDaysMin%>-<%= numberOfDaysMax%> Days</span>
+                                <% } %>
+                                <% if(numberOfMealsMin === numberOfMealsMax || numberOfMealsMin == 0){ %>
+                                <span><i class="fa fa-cutlery"></i> <%= numberOfMealsMax%> Meals</span>
+                                <% } else { %>
+                                <span><i class="fa fa-cutlery"></i> <%= numberOfMealsMin%>-<%= numberOfMealsMax%> Meals</span>
+                                <% } %>
+
+                                <!-- Commenting out Cities and Countries -->
+                                <%/* if(citiesCount() > 0){ %>
+                                <%= citiesCount() %> Cities
+                                <% } %>
+                                <% if(countriesCount() > 0){ %>
+                                <%= countriesCount() %> Countries
+                                <% } */%>
+                                <!-- End Comment out -->
+                            </small>
+                        </header>
+                        <div class="tour-content">
+                            <div class="tour-description">
+                                <small>
+                                    <%= summary %>
+                                </small>
+                                <% var exts = showExtensions();
+                                if(exts != null && exts != '') { %>
+                                <small>
+                                    <strong>
+                                        <%= exts %>
+                                    </strong>
+                                </small>
+
+                                <% } %>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 full-width-xs text-center">
+                        <% if(showReviews()) { %>
+                        <div class="star-rating pull-right">
+                            <img src="<%= feefoSearchImg %>" alt="<%= feefoRating %> - <%= title %>">
+                        </div>
+                        <% } %>
+                        <div class="tour-price <%if (showCallToBook || hideBookNow){ %> callToBookPadding <% }%> ">
+                            <div class="inner">
+                                <% if (!alternativeStyle) {%>
+                                <div class="before-price-text"><%= startFromText %></div>
+
+                                <% if (onlySoldOutDates) {%>
+                                <div class="sold-price-text">
+                                    <strong><%= minPrice() %></strong><span class="price-per"><%= freeFormTextPP %><sup>*</sup></span>
+                                    <!-- The below hardcoded number should be
+                                    replaced with the struckthrough old price-->
+                                    <% if(showStrikeOutPrice() && totalPrice() != null) { %>
+                                    <div><strike><em><%= totalPrice() %><span><%= freeFormTextPP %></span></em></strike></div>
+                                    <% } %>
+                                </div>
+                                <% } else { %>
+                                <div class="price-text">
+                                    <strong><%= minPrice() %></strong><span class="price-per"><%= freeFormTextPP %><sup>*</sup></span>
+                                    <!-- The below hardcoded number should be
+                                    replaced with the struckthrough old price-->
+                                    <% if(showStrikeOutPrice() && totalPrice() != null) { %>
+                                    <div><strike><em><%= totalPrice() %><span><%= freeFormTextPP %></span></em></strike></div>
+                                    <% } %>
+                                </div>
+
+                                <% } %>
+
+                                <% } else { %>
+                                <% if (onlySoldOutDates) {%>
+                                <div class="before-price-text marriott-sold-out"><%= startFromText %></div>
+                                <div class="price-text gotham marriott-sold-out"><%= minPriceRawValue() %></div>
+                                <div class="after-price-text gotham marriott-sold-out"><%= currencyDescription %></div>
+                                <div class="bold-price gotham marriott-sold-out"><%= freeFormTextPP %><sup>*</sup></div>
+                                <% } else { %>
+                                <div class="before-price-text"><%= startFromText %></div>
+                                <div class="price-text gotham"><%= minPriceRawValue() %></div>
+                                <div class="after-price-text gotham"><%= currencyDescription %></div>
+                                <div class="bold-price gotham"><%= freeFormTextPP %><sup>*</sup></div>
+                                <% } %>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tour-price-actions">
+                    <div class="tour-actions row">
+                        <!--need to change the column name from col-sm-4 to col-sm-6 whenn there are 2 buttons only-->
+                        <%if( showRequestAQuote() ){%>
+                        <div class="col-sm-4 col-xs-6">
+                            <a href="<%= tourDetailUrl %>" class="btn btn-secondary-reverse"><%= tourDetailsText %></a>
+                        </div>
+                        <div class="col-sm-4 col-xs-6">
+                            <button class="request_quote_button btn btn-secondary-reverse" data-toggle="modal" data-tourtitle="<%- title %>" data-tourid="<%= tourId %>" data-tourimage="<%= imageUrl %>" data-toursummary="<%- summary %>">Request a Quote</button>
+                        </div>
+                        <%if( showBookNow() ){%>
+                        <div class="col-sm-4 col-xs-12">
+                            <% if (isClientBaseBooking()) {%>
+                            <a href="<%= bookingUrl %>" class="btn btn-secondary bookNowButton"><%= bookNowText %></a>
+                            <% }  else { %>
+                            <a href="<%= bookingUrl %>" target="_blank" class="btn btn-secondary bookNowButton"><%= bookNowText %></a>
+                            <% } %>
+                        </div>
+                        <%} else if (onlySoldOutDates) {%>
+                        <div class="col-sm-4 <%= callToBookClass() %>">
+                            <a href="tel:<%= callToBookPhoneNumber %>" class="btn <%= callToBookColorClass() %> callToBookButton"><i class="fa fa-phone"></i> Call for Info: <%= callToBookPhoneNumber %></a>
+                        </div>
+                        <%} else if (showCallToBook() || hideBookNow || onlyCallforDetailDates) {%>
+                        <div class="col-sm-4 <%= callToBookClass() %>">
+                            <a href="tel:<%= callToBookPhoneNumber %>" class="btn <%= callToBookColorClass() %> callToBookButton"><i class="fa fa-phone"></i> Call to Book: <%= callToBookPhoneNumber %></a>
+                        </div>
+                        <%}%>
+                        <% } %>
+                        <%if( !showRequestAQuote() ){%>
+                        <div class="col-sm-6 col-xs-6">
+                            <a href="<%= tourDetailUrl %>" class="btn btn-secondary-reverse"><%= tourDetailsText %></a>
+                        </div>
+                        <%if( showBookNow() ){%>
+                        <div class="col-sm-6 col-xs-6">
+                            <% if ( isClientBaseBooking() ) { %>
+                            <a href="<%= bookingUrl %>" class="btn btn-secondary bookNowButton"><%= bookNowText %></a>
+                            <% } else { %>
+                            <a href="<%= bookingUrl %>" target="_blank" class="btn btn-secondary bookNowButton"><%= bookNowText %></a>
+                            <% } %>
+                        </div>
+                        <%} else if (onlySoldOutDates) {%>
+                        <div class="col-sm-6 <%= callToBookClass() %>">
+                            <a href="tel:<%= callToBookPhoneNumber %>" class="btn <%= callToBookColorClass() %> callToBookButton"><i class="fa fa-phone"></i> Call for Info: <%= callToBookPhoneNumber %></a>
+                        </div>
+                        <%} else if (showCallToBook || hideBookNow || onlyCallforDetailDates) {%>
+                        <div class="col-sm-6 <%= callToBookClass() %>">
+                            <a href="tel:<%= callToBookPhoneNumber %>" class="btn <%= callToBookColorClass() %> callToBookButton"><i class="fa fa-phone"></i> Call to Book: <%= callToBookPhoneNumber %></a>
+                        </div>
+                        <%}%>
+                        <% }%>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%if( (extraButtons && extraButtons.length > 0) || (mainButtons && mainButtons.length > 0) ){%>
+        <nav class="tour-main-nav">
+            <ul>
+                <% _.each(mainButtons, function(button)  { %>
+                <li><a href="#" class="tour-nav-item" data-load="<%= button.Type %>"><i class="fa <%= button.IconClass %>"></i> <%= button.Title %></a> </li>
+                <% }); %>
+                <%if( extraButtons.length > 0 ){%>
+                <li><a class="tour-sub-nav-trigger" data-toggle="collapse" href="#tour-sub-nav-<%= resultNumber %>"><i class="fa fa-chevron-circle-down"></i> See All</a></li>
+                <% }%>
+            </ul>
+        </nav>
+        <div class="tour-sub-nav collapse" aria-expanded="false" id="tour-sub-nav-<%= resultNumber %>">
+            <div class="padded">
+                <ul class="list-simple">
+                    <% _.each(extraButtons, function(button)  { %>
+                    <li><a href="#" class="tour-nav-item" data-load="<%= button.Type %>"><i class="fa <%= button.IconClass %>"></i> <%= button.Title %></a> </li>
+                    <% }); %>
+                </ul>
+            </div>
+        </div>
+        <% }%>
+    </div>
+</script>

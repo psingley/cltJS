@@ -1,0 +1,68 @@
+<script type="text/template" id="package-description">
+	<div class="section">
+		<div class="row">
+			<div class="col-xs-12 col-sm-8 col-md-6">
+					<div class="pad">
+							<h2 id="tourPageSubTitle"><%=sTitle %></h2>
+							<p><%=desc%></p>
+					 <a id="showExperienceButtonHref" class="btn btn-primary ett mobile" href="<%=experienceUrl%>"><%=experienceThisTourText%></a>
+
+					</div>
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-6 first-xs last-sm">   
+                        <div id="tour-detail-carousel" class="carousel slide multipleCarousel" data-ride="carousel" data-interval="5000" data-wrap="True" data-keyboard="True">
+                            <ol class="carousel-indicators"></ol>
+                                <div class="carousel-inner" style="height:340px;">
+
+                                    <%_.each(sliderImages(),function(sliderImage)
+                                    {
+                                    if(sliderImage != null){
+                                    if(sliderImage.videoId != null)
+                                    { %>
+                                    <div class="item">
+                                            <div class="wistia_embed wistia_async_<%= sliderImage.videoId %>" style="height:350px;width:570px">&nbsp;</div>
+                                    </div>
+                                    <% }
+                                    else if(sliderImage.mimeType == 'video/mp4'){ %>
+                                    <div class="item">
+                                         <video>
+                                             <source src="<%= sliderImage.url %>" type="<%= sliderImage.mimeType %>" style="width:100%;" />
+                                         </video>
+                                    </div>
+                                    <% }
+                                    else { %>
+                                    <div class="item">
+                                        <img src="<%= sliderImage.url %>" alt="<%- sliderImage.altTag %>" style="width:100%;" />
+                                    </div>
+                                    <% }
+                                    }
+                                    });%>
+                                </div>
+                                <a class="left carousel-control" href="#tour-detail-carousel" data-slide="prev" style="display: none">
+                                    <span class="fa fa-chevron-left"></span>
+                                </a>
+                                <a class="right carousel-control" href="#tour-detail-carousel" data-slide="next" style="display: none">
+                                    <span class="fa fa-chevron-right"></span>
+                                </a>
+                            </div>
+
+                <script type="text/javascript">
+		//Server side setting 1st slide as active to avoid js lag for user
+                    var carousel = document.getElementById("tour-detail-carousel");
+		if (carousel != null) {
+			var carouselInner = carousel.getElementsByClassName("carousel-inner");
+			if (carouselInner.length > 0) {
+				var slides = carouselInner[0].getElementsByClassName("item");
+				if (slides.length > 0) {
+				    var firstSlide = slides[0];
+				    console.log("setting active value");
+					firstSlide.className += " active";
+				}
+			}
+		}
+                </script>
+
+                </div>
+            </div>
+		</div>
+  </script>

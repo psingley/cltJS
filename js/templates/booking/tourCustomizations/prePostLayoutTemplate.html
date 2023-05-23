@@ -1,0 +1,64 @@
+<script type="text/template" id="pre-post-layout-template">
+    <div class="input_row no_first_col">
+        <div class="input_col description_col">
+            <label><%= servicesHeaderText %></label>
+        </div>
+        <div class="input_col rooms_col">
+            <label><%= roomsHeaderText %></label>
+        </div>
+        <div class="input_col price_col">
+            <label><%= priceHeaderText %></label>
+        </div>
+        <div class="input_col nights_col">
+            <label><%= nightsHeaderText %></label>
+        </div>
+    </div>
+
+
+    <div class="no_first_col top_border no_padding">
+        <div class="input_col description_col">
+            <h4><%= preExtensionTitleText %></h4>
+            <% if(whyToBookPreExtensions !== '') {%>
+            <p><%= whyToBookPreExtensions %></p>
+            <% } %>
+        </div>
+    </div>
+    <div id="extensionBeforeTour">
+    </div>
+
+
+    <div class="no_first_col top_border no_padding">
+        <div class="input_col description_col">
+            <h4><%= postExtensionTitleText %></h4>
+            <% if(whyToBookPostExtensions !== ''){ %>
+            <p><%= whyToBookPostExtensions %></p>
+            <% } %>
+        </div>
+    </div>
+    <div id="extensionAfterTour">
+    </div>
+
+    <div class="top_border no_padding">
+        <div class="input_col checkbox"></div>
+        <div class="input_col description_col">
+            <h4><%= preUpgradeTitleText %></h4>
+            <% if(whyToBookPreUpgrades !== '') { %>
+            <p><%= whyToBookPreUpgrades %></p>
+            <% } %>
+        </div>
+    </div>
+    <div id="beforeTour">
+    </div>
+
+    <div class="top_border no_padding">
+        <div class="input_col checkbox"></div>
+        <div class="input_col description_col">
+            <h4><%= postUpgradeTitleText %></h4>
+            <% if(whyToBookPostUpgrades !== '') { %>
+            <p><%= whyToBookPostUpgrades %></p>
+            <% } %>
+        </div>
+    </div>
+    <div id="afterTour">
+    </div>
+</script>

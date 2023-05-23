@@ -1,0 +1,30 @@
+﻿<script id="itinerary-item-template" type="text/template">	
+		<div class="timeline-day">
+			<h4><%= title %></h4>
+			<p><%= description %></p>
+			<div class="details">
+				<ul>
+					<% if(showFood){ %>
+					<li>
+						<i class="fa fa-cutlery"></i>
+						<%= foodText %>
+					</li>
+					<% } %>
+					
+					<% if(showTemperature){ %>
+					<li>
+						<i class="fa fa-sun-o"></i><strong><%= highText %></strong> <%= highTemperature %>&deg;
+						<strong><%= lowText %></strong> <%= lowTemperature %>&deg;
+					</li>
+					<% } %>
+					<% if(rainPrecipitation != "" && rainPrecipitation > 0){ %>
+					<li><i class="fa fa-umbrella"></i><%= rainPrecipitation %>"</li>
+					<% } %>
+
+					<% if(isSupplierExist){ %>
+					<li><i class="fa fa-building"></i><%= supplierHtml() %></li>
+					<% } %>
+				</ul>
+			</div>
+		</div>	
+</script>

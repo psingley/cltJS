@@ -1,0 +1,72 @@
+<script type="text/template" id="tour-date-row-template">
+		
+	<% if(isHotDealDate) {%>
+		<div class="tag deal no-flag">
+			<i class="fa fa-clock-o"></i>Hot Deal
+		</div>
+	<%}%>
+
+	<div class="date-title"><%=dateText%></div>
+	<div class="date-price">
+		<% if(!soldOut) {%>
+			<% if(isCaa) {%>
+			<span class="price discountedPriceCAA"><%= priceText() %></span>
+			<% } else { %>
+			<span class="price"><%= priceText() %></span>
+			<% } %>
+			<% if(showCrossedOut()) { %>
+			<span class="price original-price"><%=crossedOutPriceText()%></span>
+			<%}%>
+		<% } %>
+		<% if(soldOut) {%>
+			<span class="price"><%= priceText() %></span>
+		<% } %>		
+	</div>
+		
+	<% if(showAlertSubtle && !soldOut) {%>
+	<div class="date-alert subtle" data-toggle="modal" data-target="#special-offers-modal">
+		<span class="help">
+			<i class="fa fa-warning"></i>
+			<%= alertSubtleText()%>
+		</span>
+	</div>
+	<% } %>
+
+	<% if(isAgent() && guaranteed && call && callText()) {%>
+	<div class="date-alert success"><%=guaranteedText%>, <%=callText()%></div>
+	<% }
+	else if(guaranteed && (isAgent() || showGuaranteedForConsumers())) {%>
+	<div class="date-alert success"><%=guaranteedText%></div>
+	<% }
+	else if(call && callText()) {%>
+	<div class="date-alert success"><%=callText()%></div>
+	<% } %>
+
+	<% if (soldOut) {%>
+	<div class="date-alert sold-out"><%=soldOutText%></div>
+	<% } else if (seatsRemainingText != "" && !call){ %>
+	<div class="date-alert danger">
+		<i class="fa fa-warning"></i><%=seatsRemainingText%>
+	</div>
+	<% } %>
+	<% if(!isBooking && !soldOut) {%>
+	<div class="date-actions btn-group btn-group-justified">
+		<% if(!soldOut) {%>
+		<a data-offset="60" data-itinerary="1" class="btn btn-sm btn-gray">
+			<%= itineraryText %>			
+		</a>
+		<% if(isBookingEngineAvailable && !call && !isClientBaseBooking()) {%>
+		<a class="btn btn-primary btn-sm hidden-xs" data-url="<%=bookingPageUrl%>" target="_blank" href="<%=bookingPageUrl%>">
+			<%= bookText %>			
+		</a>
+		<% } else if(isBookingEngineAvailable && !call && isClientBaseBooking()){%>
+        <a class="btn btn-primary btn-sm hidden-xs" data-url="<%=bookingPageUrl%>" href="<%=bookingPageUrl%>">
+            <%= bookText %>
+        </a>
+        <% } %>
+		<% } %>
+	</div>
+	<% } %>
+
+
+</script>

@@ -1,0 +1,102 @@
+﻿<div data-bind="attr: { 'data-date': day }" class="" id="tcr-itinerary-day">
+    <div class="daily-rundown-section">
+        <p class="itineray-day-title dark-grey-color" data-bind='text: title'></p>
+        <hr style="width: 92%; margin: 1rem 3rem" />
+        <div style=" display: flex; justify-content: space-between; margin-bottom: 2.8rem;"
+             class="flex-column flex-lg-row">
+            <div class="cards-section">
+                <!-- ko if: showSupplier -->
+                <div class="itinerary-card">
+                    <div class="itinerary-card-content">
+                        <div class="top-half">
+                            <h6 class="title">
+                                Stay
+                                <!-- ko if: !!supplierSiteUrl -->
+                                <a data-bind="attr: { href: supplierSiteUrl }" target="_blank" class="reference-link"> <span></span> </a>
+                                <!-- /ko -->
+                            </h6>
+                            <i class="utility-icon fa fa-bed"></i>
+                        </div>
+                        <!-- ko if: !!supplierSiteUrl -->
+                        <i class="fa fa-chevron-right reference-link-sign"></i>
+                        <!-- /ko -->
+                    </div>
+                    <div class="bottom-half">
+                        <p class="util-desc" data-bind='text: supplierName'></p>
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: includeMeals -->
+                <div class="itinerary-card">
+                    <div class="itinerary-card-content" style="background-color: white">
+                        <div class="top-half">
+                            <h6 class="title">
+                                Meals
+                            </h6>
+                            <i class="utility-icon fa fa-utensils"></i>
+                        </div>
+                    </div>
+                    <div class="bottom-half">
+                        <p class="util-desc" data-bind='text: itineraryCulinerary'></p>
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: showEnhanceTour -->
+                <div class="itinerary-card">
+                    <div class="itinerary-card-content">
+                        <div class="top-half">
+                            <h6 class="title">
+                                <a href="#" class="reference-link"><span></span></a>Enhance Tour
+                            </h6>
+                        </div>
+                        <i class="fa fa-chevron-right reference-link-sign"></i>
+                    </div>
+                    <div class="bottom-half" data-bind="foreach: enhanceTourOptions">
+                        <a class="activity-link util-desc" data-bs-toggle="modal" data-bs-target="#EnhanceYourTourModal"data-bind='text: $data'></a>
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: showActivity -->
+                <div class="itinerary-card">
+                    <div class="itinerary-card-content">
+                        <div class="top-half">
+                            <h6 class="title">
+                                Activity Level
+                                <p class="reference-link"><span></span></p>
+                            </h6>
+                            <i class="utility-icon fa-solid fa-chart-line"></i>
+                        </div>
+                        <i class="fa fa-chevron-right reference-link-sign"></i>
+                    </div>
+                    <div class="bottom-half">
+                        <p class="util-desc" data-bind='text: activityLevel'></p>
+                        <!-- ko if: !!activityLevel -->
+                        <a class="activity-link util-desc" onclick="document.querySelector('#activityLevelLink').click();">What's This?</a>
+                        <!-- /ko -->
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: showExtensionStyle -->
+                <div class="itinerary-card">
+                    <div class="itinerary-card-content">
+                        <div class="top-half">
+                            <h6 class="title">
+                                Extension Style
+                                <p class="reference-link"><span></span></p>
+                            </h6>
+                        </div>
+                        <i class="fa fa-chevron-right reference-link-sign"></i>
+                    </div>
+                    <div class="bottom-half">
+                        <p class="util-desc" data-bind='text: extensionStyle'></p>
+                        <a class="activity-link util-desc" id="activityLink" data-bind="attr: { 'data-target': '#' + modalId }">What this?</a>
+                    </div>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="summary-section">
+                <div data-bind='text: description'></div>
+            </div>
+        </div>
+    </div>
+</div>

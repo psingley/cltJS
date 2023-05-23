@@ -1,0 +1,1 @@
+define(["app","jquery","domReady"],function(t,$,n){t.module("Separate-Nav-Component",function(){this.startWithParent=!1,this.addInitializer(function(){n(function(){var t=$("#primary-sticky-nav"),n=49;t.affix({offset:{top:function(){return this.top=t.offset().top-n}}})})})})});

@@ -1,0 +1,370 @@
+﻿<!-- ko if:  hasData -->
+<section class="no-print">
+    <div id="tour_detail_itinerary" class="container itinerary-content-section d-flex flex-column flex-md-row d-md-block">
+        <section class="tcr-current-toolbar">
+            <tcr-itinerary-toolbar params="data: toolbar, showExtension: showExtension"></tcr-itinerary-toolbar>
+        </section>
+        <section class="tcr-itinerary-cover">
+            <tcr-itinerary-cover params="data: cover"></tcr-itinerary-cover>
+        </section>
+        <section class="cd-horizontal-timeline tcr-day-by-day">
+            <div class="timeline orbs-section">
+                <div class="events-wrapper">
+                    <div class="events" id="tcr-event-timeline">
+                        <div class="tcr-itinerary-timeline" data-bind="foreach:  { data: timeline, as: 'timelineItem' }">
+                            <tcr-itinerary-timeline params="data: timelineItem, index: $index()"></tcr-itinerary-timeline>
+                        </div>
+                        <span class="filling-line" aria-hidden="true"></span>
+                    </div>
+                </div>
+            </div>
+            <ul class="tcr-timeline-navigation">
+                <li><a href="#0" id="tcr-itinerary-timeline-pre" class="prev">Prev</a></li>
+                <li><a href="#0" id="tcr-itinerary-timeline-next" class="next">Next</a></li>
+            </ul>
+            <div class="events-content">
+                <div class="tcr-current-itinerary">
+                    <tcr-itinerary-day params="data: currentItinerary"></tcr-itinerary-day>
+                </div>
+            </div>
+        </section>
+
+        <!-- ko if: !!map -->
+        <section class="tcr-itinerary-map">
+            <tcr-itinerary-map params="data: map"></tcr-itinerary-map>
+        </section>
+        <!-- /ko -->
+    </div>
+</section>
+
+<!--print layout-->
+<section class="tcr-print-itinerary" id="tcr-print-itinerary">
+    <style>
+      
+
+     
+        #print_itinerary_modal .modal-content {
+            height: 52vh;
+            overflow-x: auto;
+            overflow-y: auto;
+        }
+
+        .tcr-tool-print {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .tcr-tool-print .tcr-tool-card {
+                border: solid 0.4px #dadce0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin: 10px;
+                cursor: pointer
+            }
+
+            .tcr-tool-print .tcr-tool-card-title {
+                background-color: #e9e9e9;
+                margin: 0;
+                padding: 12px;
+                font-size: 12px;
+            }
+
+            .tcr-tool-print img {
+                width: 115px;
+                height: 125px;
+            }
+
+        .tcr-green-text {
+            color: #027602;
+        }
+
+            .tcr-green-text:hover {
+                color: #027602;
+            }
+
+        .tcr-bold-text {
+            font-weight: bold;
+        }
+
+        .tcr-print-itinerary {
+            display: none;
+        }
+
+            .tcr-print-itinerary img {
+                max-width: 100%;
+                max-height: 100%;
+            }
+
+            .tcr-print-itinerary .tcr-print-divide-big {
+                height: 3px;
+                background-color: #2d497e;
+                opacity: 1;
+            }
+
+            .tcr-print-itinerary .tcr-print-divide-small {
+                height: 1px;
+                background-color: #2d497e;
+                opacity: 1;
+            }
+
+            .tcr-print-itinerary .tcr-print-itinerary {
+                display: flex;
+                justify-content: space-around;
+                align-items: flex-start;
+            }
+
+            .tcr-print-itinerary .tcr-print-itinerary-img {
+                width: 180px;
+                height: 90px;
+            }
+
+            .tcr-print-itinerary .tcr-print-itinerary-desc {
+                margin: 0;
+                padding: 0 12px;
+                text-align: justify;
+            }
+
+            .tcr-print-itinerary .tcr-print-itinerary-utilities {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+            }
+
+            .tcr-print-itinerary .tcr-print-itinerary-utility {
+                width: 25%;
+            }
+
+                .tcr-print-itinerary .tcr-print-itinerary-utility .uti-title {
+                    margin: 0 0 10px 0;
+                    font-weight: bold;
+                }
+
+        #share_itinerary_modal .modal-inner {
+        }
+
+        #share_itinerary_modal .modal-fixed-header {
+            padding: 0;
+            margin: 0 auto;
+            width: 100%;
+            background-color: #fff;
+            margin-bottom: 5px;
+            -moz-box-shadow: 0 0px 8px rgb(0 0 0 / 40%);
+            -webkit-box-shadow: 0 0px 8px rgb(0 0 0 / 40%);
+            box-shadow: 0 0px 8px rgb(0 0 0 / 40%)
+        }
+
+        #share_itinerary_modal .tcr-share-tab-selected {
+            border-bottom: solid !important;
+        }
+
+        #share_itinerary_modal .tcr-share-heading {
+            display: flex;
+            text-align: center;
+            align-content: center;
+            flex-direction: column;
+            padding-top: 10px;
+        }
+
+        #share_itinerary_modal .btn-social {
+            border-radius: 50%;
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 5rem;
+            padding: 0;
+            position: relative;
+            text-align: center;
+            transform-origin: center;
+            transition: all 0.25s;
+            width: 5rem;
+            border-color: #918e8e;
+            color: black;
+        }
+
+            #share_itinerary_modal .btn-social:hover {
+                transform: scale(1.2);
+            }
+
+            #share_itinerary_modal .btn-social i {
+                font-size: 16px;
+            }
+
+            #share_itinerary_modal .btn-social span {
+                padding: 1rem 0;
+            }
+
+        #share_itinerary_modal .tcr-share-tabs {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 5px;
+            font-size: 1.2rem;
+            width: 60%;
+            margin: 0 auto;
+            font-weight: bold;
+        }
+
+        #share_itinerary_modal .tcr-share-tab {
+            border: none;
+            cursor: pointer;
+            background: transparent;
+            border-bottom: none;
+            font-weight: 600;
+        }
+
+        #share_itinerary_modal .modal-content {
+            position: relative;
+            height: 50vh;
+            overflow-x: auto;
+            overflow-y: auto;
+            padding: 10px;
+            border: none !important;
+        }
+
+        #share_itinerary_modal .tcr-share-content {
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        #share_itinerary_modal .tcr-share-social-content .list-inline {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 60%;
+            margin: 0 auto;
+        }
+
+        #share_itinerary_modal .tcr-share-social-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 1.4rem;
+        }
+
+            #share_itinerary_modal .tcr-share-social-item span {
+                font-size: 1.2rem;
+                padding: 8px;
+            }
+
+        #share_itinerary_modal .tcr-share-url-content, #share_itinerary_modal .tcr-share-email-content {
+            display: flex;
+            flex-direction: column;
+            /*align-items: center;*/
+        }
+
+            #share_itinerary_modal .tcr-share-email-content p {
+                margin: 10px 0;
+            }
+
+        #share_itinerary_modal .tcr-share-input, #share_itinerary_modal .hs-input {
+            color: #918e8e;
+            padding: 10px;
+            width: 30rem;
+            height: 3rem;
+            border-radius: 25px;
+            font-size: 1rem;
+        }
+
+        #share_itinerary_modal .tcr-share-input-disable {
+            cursor: not-allowed;
+        }
+
+        #share_itinerary_modal .tcr-share-form-btn, #share_itinerary_modal .hs-button {
+            border-radius: 25px;
+            background: #2a800e;
+            height: 3rem;
+            width: 30rem;
+            text-align: center;
+            margin-top: 2rem;
+            border-color: #2d8c0e;
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #share_itinerary_modal .tcr-share-form-btn-disable {
+            background: grey;
+            color: #fff;
+            cursor: not-allowed;
+            border-radius: 25px;
+            height: 3rem;
+            width: 30rem;
+            text-align: center;
+            margin-top: 2rem;
+            border-color: #2d8c0e;
+            text-decoration: none;
+            padding: 8px;
+        }
+
+        #share_itinerary_modal .submitted-message p {
+            color: black;
+            font-size: large;
+        }
+
+
+        .tcr-itinerary .no-show {
+            display: none !important;
+        }
+
+        .tcr-itinerary .cursor-none {
+            cursor: not-allowed;
+        }
+
+        .tcr-pointer {
+            cursor: pointer;
+        }
+
+        .tcr-error {
+            color: red;
+            font-weight: 600;
+        }
+
+        @media print {
+            .tcr-print-itinerary {
+                display: block;
+            }
+
+            .no-print, .no-print * {
+                display: none !important;
+            }
+        }
+    </style>
+    <img data-bind="attr: { src: tourInfo.companyLogo }" style="max-width: 100%; max-height: 100%" />
+    <img data-bind="attr: { src: tourInfo.tourImage }" style="max-width: 100%; max-height: 100%" />
+    <h2>Itinerary </h2>
+
+    <hr class="tcr-print-divide-big" style=" height: 3px; background-color: #2d497e; opacity: 1;" />
+
+    <h3 data-bind="text: tourInfo.tourTitle"><span class="small" data-bind="text: tourInfo.tourSubTitle"></span></h3>
+    <h4 class="tcr-green-text tcr-bold-text" data-bind="text: tourInfo.packageDate" style=" color: #027602;"> </h4>
+    <!-- ko if: mainItineraries != null -->
+    <div data-bind="foreach: mainItineraries">
+        <hr class="tcr-print-divide-small" style="height: 1px; background-color: #2d497e; opacity: 1;" />
+        <h3 class="tcr-green-text tcr-print-day-title" data-bind="text: $parent.getItineraryDay($data)" style=" color: #027602;"></h3>
+        <div class="tcr-print-itinerary" style="display: flex; justify-content: space-around; align-items: flex-start;">
+            <img class="tcr-print-itinerary-img"
+                 style="width: 180px; height: 90px;"
+                 data-bind="attr: {src: 'https://i.gocollette.com/tour-media-manager/tours/africa/egypt/526/packages/master-package/top-carousel/treasuresegypt_hero3_nile.jpg' }" />
+            <p class="tcr-print-itinerary-desc" data-bind="text: description?.replace(/(<([^>]+)>)/ig, '')" style="margin: 0; padding: 0 12px; text-align: justify;"></p>
+        </div>
+        <div class="tcr-print-itinerary-utilities" style="display: flex; justify-content: flex-start; align-items: center;">
+            <div class="tcr-print-itinerary-utility" style="width: 25%;">
+                <p class="tcr-bold-text uti-title" style="margin: 10px 0 10px 0; font-weight: bold;">Hotel</p>
+                <p class="" data-bind="text: supplier?.name || '' "></p>
+            </div>
+            <div class="tcr-print-itinerary-utility" style="width: 25%;">
+                <p class="tcr-bold-text uti-title" style="margin: 10px 0 10px 0; font-weight: bold;">Culinary</p>
+                <p class="" data-bind='text: $parent.getItineraryCulinerary($data)'></p>
+            </div>
+        </div>
+    </div>
+    <!-- /ko -->
+</section>
+<!-- /ko -->
+<div id="printThis"></div>

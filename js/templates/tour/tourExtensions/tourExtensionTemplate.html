@@ -1,0 +1,11 @@
+<script type="text/template" id="tour-extension-template">
+    <img class="extensionImage" src="<%= getImageUrl() %>" alt="<%= formattedTitle %>" style="height:254px; width:450px;">
+    <h4><%= formattedTitle %></h4>
+
+	<%if( showPrice() ){%>
+	<span><%= formattedPrice %> <%= ppText() %></span>
+	<% }%>
+
+
+	<a href="#" class="btn btn-primary button"><%= extensionDetailsText %></a>
+</script>

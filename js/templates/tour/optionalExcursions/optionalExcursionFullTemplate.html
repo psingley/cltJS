@@ -1,0 +1,17 @@
+<script type="text/template" id="optional-excursion-full">
+    <div class="header">
+        <strong><%=fullTitle%></strong>
+        <br/><%=cityText%>
+        <br/><%=durationText%>
+        <% if(transportationIncluded){ %>
+            <br><%=transportationIncludedLabel%>
+        <% } %>
+        <br><%= description %>
+        <% if(showComments){ %>
+            <br><%=comments%>
+        <% } %>
+        <% if(showNotes){ %>
+            <br><%=notes%>
+        <% } %>
+    </div>
+</script>

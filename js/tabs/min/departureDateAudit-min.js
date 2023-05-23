@@ -1,0 +1,1 @@
+var report=new Object;report.pageName="DepartureDateAudit",report.itemId="{56A80C06-1AF9-457D-A82D-49BAC3F274C9}",$(function(){$(document).on("click",".open-button",function(){var t=this.getAttribute("data-package-id"),e=this.getAttribute("data-lang"),o="/sitecore/shell/sitecore/content/Applications/Content Editor.aspx?id="+t+"&la="+e+"&fo="+t;window.open(o)})});

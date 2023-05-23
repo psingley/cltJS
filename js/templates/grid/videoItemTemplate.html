@@ -1,0 +1,12 @@
+<script id="video-template" type="text/template">
+	<li class="result-list-item">
+		<a class="video-thumbnail hover-thumbnail" href="<%=linkPath%>">
+			<img src="<%= thumbnailImageUrl %>" alt="">
+			<span class="timestamp"><%= videoLength %></span>
+		</a>
+		<h3 class="item-title"><%= videoTitle %></h3>
+		<h5 class="item-date"><%= addedOnText %> <time datetime="<%- videoDateAdded %>"><%= videoDateAdded %></time></h5>
+		<p><%= videoSummary %></p>
+		<a href="<%=linkPath%>" class="btn btn-primary"><%= buttonText() %></a>
+	</li>
+</script>

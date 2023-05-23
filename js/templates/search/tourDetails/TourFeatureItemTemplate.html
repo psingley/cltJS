@@ -1,0 +1,17 @@
+<script id="features-view-template" type="text/template">
+	
+	<% if(isAgent()){ %>
+		<a href="<%= searchUrl %>">
+			<%= title %>
+			<% if (count > 0) { %>
+			<span class="badge">
+				<%= count %>
+			</span>
+			<% } %>
+		</a>
+	<% } else { %>
+		<span>
+			<%= title %>
+		</span>
+	<% } %>
+</script>

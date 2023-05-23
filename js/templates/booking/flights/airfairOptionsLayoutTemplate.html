@@ -1,0 +1,49 @@
+<script type="template/text" id="airfair-option-layout-template">
+    <div class="subheader filter_airfare">
+     <span id="bestAirfareOptionsInfo"></span>&nbsp;<a id="showAllAirfareOptions" href="#"><%= showAllAirfareOptionsText %></a>
+
+
+        <div id="airfareTypesRegion" class="clearfix cols">
+
+            <div class="col col1"><%= filterResultsByText %>:
+            </div>
+            <div class="col col2">
+                <div><%= airfareTypeText %></div>
+                
+            </div>
+
+           <div class="col col3">
+					 	<div>
+					 		<select id="airfareTypesSelect"></select>
+					 	</div>
+            </div>
+        </div>
+
+        <div id="biasInfo">
+            <!--The flights are not displayed in a neutral order and certain airlines’ fares, schedule or 
+            availability information are given preferential treatment in the display. The results are sorted by Land and Air Price.-->
+        </div>
+    </div>
+    <div class="headers clearfix">
+        <div class="sort_by_col"><%= sortByText %></div>
+        <div class="price_col">
+					<a href="#" class="sort_filter ASC" data-sortcode="price"><%= priceText %></a>
+        </div>
+        <div class="departure_col">
+					<a href="#" class="sort_filter" data-sortcode="sortDeparture"><%= departureText %></a>
+        </div>
+        <div class="arrival_col">
+					<a href="#" class="sort_filter" data-sortcode="sortArrival"><%= arrivalText %></a>
+        </div>
+        <div class="stops_col">
+                    <a href="#" class="sort_filter" data-sortcode="sortStops"><%= stopsText %></a>
+        </div>
+        <div class="duration_col">
+					<a href="#" class="sort_filter" data-sortcode="sortDurationMinutes"><%= durationText %></a>
+        </div>
+    </div>
+    <div id="flightSchedulesRegion"></div>
+		<div id ="viewMoreResults">
+			<a href="#" class="grey_block_arrow"><%= viewMoreResultsText %></a>
+		</div>
+</script>

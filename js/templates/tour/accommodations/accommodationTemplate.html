@@ -1,0 +1,15 @@
+<script type="text/template" id="accommodation-template">
+	<a class="hotelImage_link">
+		<img src="<%= getImageUrl() %>" alt="<%= title %>"/>
+	</a>
+	<div class="innerHotelContent">
+		<div class="hotelLeft">
+			<div class="title">
+				<%= title %>
+			</div>
+			<div class="city">
+				<%= getCityHtml() %>
+			</div>
+		</div>
+	</div>
+</script>

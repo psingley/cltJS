@@ -1,0 +1,43 @@
+<script type="text/template" id="package-experiences">
+    <div class="clearfix">
+        <div class="right_col text-right">
+          <img src="<%= mapImage.url %>" alt="<%- mapImage.altTag %>" />
+      </div>
+      <div class="left_col">
+          <div class="pad">
+              <%= yourRouteSummary %>
+          </div>
+      </div>
+    </div>
+    <div id="experiences">
+        <% if(showMustSee) {%>
+            <div class="side-by-side">
+                <p class="title"><%= mustSeeTitle %></p>
+                <%= mustSee %>
+            </div>
+        <% } %>
+        <% if(showChoiceOnTour) {%>
+            <div class="side-by-side">
+                <p class="title"><%= choiceOnTourTitle %></p>
+                <%= choiceOnTour %>
+            </div>
+        <% } %>
+        <% if(showCulinary) {%>
+            <div class="side-by-side">
+                <p class="title"><%= culinaryTitle %></p>
+                <%= culinary %>
+            </div>
+        <% } %>
+    </div>
+    <div class="expanded" id="extensionExpandedView">
+      <div class="pad">
+          <dl id="extensionsHeaderSections" class="cta">
+              <dt><%= extensionsHeaderTitle%></dt>
+              <dd><%= extensionsHeaderSubTitle%></dd>
+          </dl>
+          <div class="clearfix">
+              <p><%=yourRouteDescription%></p>
+         </div>
+      </div>
+    </div>
+</script>

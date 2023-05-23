@@ -1,0 +1,7 @@
+<script type="text/template" id="tour-upgrade-template">
+        <div class="input_col checkbox"><input data-id="<%= id %>" class="packageUpgrade_checkbox" name="<%= serviceType.name %>Upgrade<%= packagePrompt.neoId %>" type="radio" <%= itemChecked() %> ></div>
+        <div class="input_col description_col"><%= serviceType.name %> : <%= contractName %> - <%= serviceTypeDetail.name %></div>
+        <div class="input_col rooms_col"><span class="noOfRooms"><%= noOfRooms %></span> <%= roomsText() %></div>
+        <div class="input_col price_col"><%= price.toString().formatPrice() %></div>
+        <div class="input_col nights_col"><%= numberOfNights %> <%= nightsText %></div>
+</script>

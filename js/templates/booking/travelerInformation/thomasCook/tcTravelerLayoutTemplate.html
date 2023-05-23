@@ -1,0 +1,98 @@
+<script type="text/template" id="tc-traveler-template">
+    <div id="" class="header t<%= travelerNumber()+1 %>">
+        <a href="#" class="arrow_down <%= closedClass() %>" title="View Route Details"><%= travelerText %> : <%= firstName %></a>
+    </div>
+    <div id="<%= id %>" class="traveler_info">
+        <div class="notice">
+            <span><%=noticeText %></span>
+            <%= yourPersonalText %>
+        </div>
+        <div class="subheader clearfix">
+            <div class="left_col">
+                <%= personalInfoText %>
+            </div>
+            <div class="right_col">
+                <%= requiredText %>
+            </div>
+        </div>
+        <div class="contact_info0 pad">
+			<% if (showSalutationField) { %>
+				<div class="row">
+					<div class="form-group col-xxs-12 col-xs-6 col-md-3">
+						<label><%= salutationText %></label>
+						<select name="salutation" class="salutationDropDown travelerInput">
+						</select>
+					</div>
+				</div>
+			<% } %>
+            <div class="row">
+				<div class="form-group col-xxs-12 col-xs-6 col-md-3">
+					<label><%= firstNameText %>*</label>
+	                <input name="firstName" type="text" value="<%= firstName %>" class="large travelerInput form-control">
+				</div>
+				<div class="form-group col-xxs-12 col-xs-6 col-md-3">
+					<label><%= middleInitialText %></label>
+	                <input name="middleInitial" type="text" value="<%= middleInitial %>" class="small travelerInput form-control">
+				</div>
+                <div class="form-group col-xxs-12 col-xs-6 col-md-3">
+					<label><%= lastNameText %>*</label>
+	                <input name="lastName" type="text" value="<%= lastName %>" class="large travelerInput form-control">
+                </div>
+				<div class="form-group col-xxs-12 col-xs-6 col-md-3">
+					<label><%= suffixText %></label>
+	                <select name="suffix" class="suffixDropDown travelerInput">
+	                </select>
+				</div>
+            </div>
+            <div class="row">
+				<div class="form-group col-xxs-12 col-xs-5 col-sm-6 col-md-3">
+					<label><%= genderText %>*</label>
+	                <select name="gender" class="genderDropDown travelerInput">
+	                </select>
+				</div>
+				<div class="form-group col-xxs-12 col-xs-7 col-sm-6 col-md-5 col-lg-4">
+					<label><%= dateOfBirthText %></label>
+					<div class="row">
+						<% if(UKDateFormat()){ %>
+							<div class="col-xs-4">
+		                    	<input class="form-control travelerInput" data-position="1" name="day" value="<%= day %>" placeholder="<%= dayText %>" maxlength="2" type="text" />
+							</div>
+							<div class="col-xs-4">
+		                    	<input class="form-control travelerInput" data-position="2" name="month" value="<%= month %>" placeholder="<%= monthText %>" maxlength="2" type="text" />
+							</div>
+							<div class="col-xs-4">
+		                    	<input class="form-control travelerInput" data-position="3" name="year" value="<%= year %>" placeholder="<%= yearText %>" maxlength="4" type="text" />
+							</div>
+		                <% } else { %>
+		                    <div class="col-xs-4">
+								<input class="form-control travelerInput" data-position="1" name="month" value="<%= month %>" placeholder="<%= monthText %>" maxlength="2" type="text" />
+							</div>
+		                    <div class="col-xs-4">
+								<input class="form-control travelerInput" data-position="2" name="day" value="<%= day %>" placeholder="<%= dayText %>" maxlength="2" type="text" />
+							</div>
+							<div class="col-xs-4">
+		                    	<input class="form-control travelerInput" data-position="3" name="year" value="<%= year %>" placeholder="<%= yearText %>" maxlength="4" type="text" />
+							</div>
+		                <% } %>
+					</div>
+	                <small class="helper_text"><%= dateHelperText %></small>
+				</div>
+            </div>
+        </div>
+
+        <!-- Regions set for different views -->
+        <div id="contactInfoRegion">
+        </div>
+
+        <div id="additionalInfoRegion">
+        </div>
+
+        <div class="pad">
+            <% if((travelerNumber() + 1) != numberOfTravelers){ %>
+            <a href="#" class="btn btn-primary next_traveler" data-next="t<%= travelerNumber() + 2 %>"><%= nextTraveler %></a>
+            <% } %>
+        </div>
+
+		<div class="travelerErrorMessages pad"></div>
+    </div><!-- /traveler_info -->
+</script>

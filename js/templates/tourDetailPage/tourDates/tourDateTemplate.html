@@ -1,0 +1,88 @@
+﻿<script type="text/template" id="tour-detail-dates-template">
+	<!-- date and disclaimer column -->
+	<div class="banner-data">
+		<div class="banner-data-item"><span class="date"><%=dateText%></span></div>
+
+		<%if(guaranteed){%>
+		<div class="banner-data-item"><span class="guaranteed"><%=guaranteedText%></span></div>
+		<%}
+		else if(isHotDeal) {%>
+		<div class="banner-data-item"><span class="guaranteed"><%=guaranteedText%></span></div>
+		<% }
+		else if(call && callText()){%>
+		<div class="banner-data-item"><span class="guaranteed"><%=callText()%></span></div>
+		<% } %>
+		<% if (soldOut) {%>
+		<div class="banner-data-item"><span class="sold-out"><%=soldOutText%></span></div>
+		<% } %>
+
+	</div>
+	<!-- old slashed out prices -->
+	<div class="banner-data">
+		<% if(showCrossedOut()) { %>
+		<div class="banner-data-item"><span class="old-price"><%=crossedOutDoublePriceText()%></span></div>
+		<div class="banner-data-item"><span class="old-price"><%=crossedOutSinglePriceText()%></span></div>
+		<%}%>
+	</div>
+	<!-- current prices -->
+	<div class="banner-data">
+		<div class="banner-data-item"><span class="price"><%= doublePriceText() %> <span>Double</span></span></div>
+		<div class="banner-data-item"><span class="price"><%= singlePriceText() %> <span>Single</span></span></div>
+	</div>
+
+	<!--
+	Offers callout
+	Conditional logic for offers needed here.
+	"banner-offer-text" is the same language
+	that appears in top left corner of tour cards.
+	Font Awesome icon depends on offer type
+	-->
+
+	<div class="banner-data center-align">
+		<div class="banner-data-item">
+			<% if(showOffer) { %>
+			<div class="banner-offer">
+
+				<% if(isHotDeal) { %>
+				<img src="https://i.gocollette.com/img/icons/fire-icon-gray-transparent.png" alt="Hot Deal Icon" />
+				<% } else { %>
+				<i class="fa <%= offerIcon() %>"></i>
+				<% } %>
+				<div class="banner-offer-text"><%= offerText() %></div>
+			</div>
+			<% } %>
+
+		</div>
+	</div>
+
+	
+
+			<!-- special event callout -->
+			<div class="banner-data center-align">
+				<div class="banner-data-item">
+					<% if(events != null && events.length > 0) {
+					_.each(events, function(event){ %>
+					<div class="special-event">
+						<img src="<%= event.icon %>" alt="<%= event.alt %>" />
+					</div>
+					<% });
+					} else if (smallGroupTravel) { %>
+					<div class="small-group-travel" data-toggle="popover" data-container="body" data-placement="bottom" data-content="<%= smallGroupTravelDescription %>">
+						
+							<img src="<%= smallGroupTravelImageUrl %>" alt="Small Group Icon" />
+						
+					</div>
+
+					<% } %>
+				</div>
+			</div>
+			<!-- disclaimers column -->
+			<div class="banner-data">
+				<% if(seatsRemainingText != "" && !call) {%>
+				<div id="seatsRemaingSelector" class="banner-data-item"><span class="important"><%=seatsRemainingText%></span></div>
+				<% } %>
+				<% if(isSeasonalOffer) {%>
+				<div class="banner-data-item"><span class="expiration-date"><%= isSeasonalOfferText()%></span></div>
+				<% } %>
+			</div>
+</script>

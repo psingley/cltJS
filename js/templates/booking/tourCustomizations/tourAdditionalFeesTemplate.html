@@ -1,0 +1,9 @@
+<script type="text/template" id="additional-fee-template">
+	<td><label><%= serviceType.name %> : <%= contractName %></label></td>
+	<% if(isInternalAir()){ %>
+	<td><%= currencySymbol %> <%= getInternalAirPrice() %> <%= currencyCode %></td>
+	<% } else { %>
+	<td><%= currencySymbol %> <%= price %> <%= currencyCode %></td>
+	<% }%>
+
+</script>

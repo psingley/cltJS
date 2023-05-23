@@ -1,0 +1,25 @@
+<script type="text/template" id="cruise-component-template">
+	
+	<div class="cycle-slideshow-container">
+		<div id="slideshow-slider-cruise" class="cycle-slideshow"
+			  data-cycle-fx="scrollHorz"
+			  data-cycle-prev=".prevControl"
+			  data-cycle-next=".nextControl">
+			
+			<% if (images && images.length == 0){ %>
+				<img src="https://i.gocollette.com/placeholders/hotel-holder.jpg" class="popOut" data-title="<%= title %>" data-toggle="modal" data-target="#modalGallery" />
+			<% } %>
+			<% _.each(images,function(image){ %>
+				<img src="<%= image.src %>" class="popOut" data-title="<%= title %>" data-toggle="modal" data-target="#modalGallery"/>
+				<% } );%>
+		</div>
+		<% if (images && images.length > 1){ %>
+			<span class="prevControl"><%= prevText %></span>
+			<span class="nextControl"><%= nextText %></span>
+		<% } %>
+	</div>
+	
+	<h4><%= title %></h4>
+	<a href="#" class="btn btn-primary button"><%= type.title %> <%= detailsText %></a>
+	
+</script>

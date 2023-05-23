@@ -1,0 +1,17 @@
+<script type="text/template" id="summary-agent-detail-template">
+	<div class="summaryRow">
+		<div class="summaryCol summaryCol1"><%= formattedServiceDate %></div>
+		<div class="summaryCol summaryCol2"><%= quantity %></div>
+		<div class="summaryCol summaryCol3"><%= unit %></div>
+	    <div class="summaryCol summaryCol5" data-price="<%= getPrice() %>"><%= displayAsIncludedPrice() ? includedText : getPrice() %></div>
+		<div class="summaryCol summaryCol6" data-total="<%= getTotal() %>"><%= displayAsIncludedPrice() ? includedText : getTotal() %></div>
+		<div class="summaryCol summaryCol7">
+			<% if(isDeletable()) {%>
+				<a href="#" class="icon_delete"></a>
+			<% } %>
+		</div>
+	</div>
+	<div class="summaryRow">
+		<span class="summaryDescription"><label><%= descText %></label></span><%= title %>
+	</div>
+</script>

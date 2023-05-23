@@ -1,0 +1,1 @@
+define(["jquery","underscore","backbone","marionette","extensions/marionette/views/RenderedLayout"],function($,e,t,n,i){var o=i.extend({el:".header-navbar",initialize:function(){var e=this;$(this.el).affix({offset:{top:function(){return this.top=$(e.el).offset().top}}})}});return o});

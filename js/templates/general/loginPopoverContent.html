@@ -1,0 +1,109 @@
+<script id="login-popover-content-template" type="text/template">
+    <div role="tabpanel" class="login-content login-signup"  id="loginSignupTabs">
+        <ul class="nav nav-tabs d-flex justify-content-around" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#logIn" aria-controls="logIn" role="tab" data-toggle="tab" id="loginTabHeaderLink" aria-expanded="true">
+                    <h3><%= loginText %></h3>
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="#signUp" aria-controls="signUp" role="tab" data-toggle="tab" id="signupTabHeaderLink" aria-expanded="false">
+                    <h3><%= signupText %></h3>
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content clearfix">
+            <div role="tabpanel" class="tab-pane active" id="logIn">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <form class="login-form" id="loginForm">
+                            <div class="form-group">
+                                <label for="loginInputUsername">
+                                    Username
+                                </label>
+                                <input type="text" name="Username" class="form-control" id="loginInputUsername" required="">
+                            </div>
+                            <div class="form-group">
+                                <label for="loginInputPassword">
+                                    Password
+                                </label>
+                                <input type="password" name="Password" class="form-control" id="loginInputPassword" required="">
+                                <div class="show-pass"><input type="checkbox" id="loginShowPas">Show</div>
+                            </div>
+                            <div class="form-group" style="display:none;">
+                                <label for="loginInputMessage">Message</label> <input type="text" class="form-control" id="loginInputMessage">
+                            </div>
+
+                            <div class="checkbox">
+                                <label><input type="checkbox" id="loginInputRemember"><%= rememberMeText %></label>
+                            </div>
+
+                            <div class="tabpanelBottom" style="flex-direction: column;">
+                                <span>
+                                    <a href="<%= forgotPasswordLink %>" style="font-size: 1.4rem;color: #707070;width: 14.6rem;margin-left: 3.3rem;"><%= forgotPasswordText %></a>
+                                </span>
+                                <button type="submit" class="btn btn-primary" style="margin-top: 5rem; font-size: 1.4rem; font-weight: bold; margin-left: 3rem; margin-right: 3rem; margin-bottom: 3rem; width:200px"><%= loginText %></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="signUp">
+                <div class="col-xs-12">
+                    <form class="signUpForm" id="signUpForm" style="margin-top:4.8rem;">
+                        <div class="form-group text-center">
+                            <label style="font-size: 1.4rem;font-family: Montserrat;font-weight: bold;line-height: normal;color: #013b4a;"><%= chooseTypeText %></label>
+                        </div>
+                        <div class="form-group">
+                            <p style="font-size: 1.2rem;text-align: center;">
+                                <%= chooseTypeDescription %>
+                            </p>
+                        </div>
+                        <div class="form-group space-above" style=" display: flex; justify-content: center">
+                            <a id="signupTraveler" href="<%= consumerCreateAccountLink %>" class="btn btn-secondary mt-3 mx-5" style="font-size: 1.2rem;font-weight: bold;line-height: normal;letter-spacing: normal;">
+                                <%= consumerText %>
+                            </a>
+                        </div>
+                        <div class="form-group space-above" style=" display: flex; justify-content: center">
+                            <a  id="signupTravelProf" href="<%= professionalCreateAccountLink %>" class="btn btn-secondary mt-3 mx-5" style="font-size: 1.2rem;font-weight: bold;line-height: normal;letter-spacing: normal;">
+                                <%= professionalText %>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="loginFormErrorBox"></div>
+</script>
+
+
+
+<!--<div role="tabpanel" class="tab-pane" id="signUp">
+
+    <div class="col-xs-12">
+
+
+        <form class="signUpForm" id="signUpForm" style="margin-top:4.8rem;">
+            <div class="form-group text-center">
+                <label style="font-size: 1.4rem;font-family: Montserrat;font-weight: bold;line-height: normal;color: #013b4a;"><%= chooseTypeText %></label>
+            </div>
+            <div class="form-group">
+                <p style="font-size: 1.2rem;text-align: center;">
+                    <%= chooseTypeDescription %>
+                </p>
+            </div>
+            <div class="form-group space-above" style=" display: flex; justify-content: center; ">
+                <button id="signupTraveler" class="btn btn-secondary mt-3 mx-5" onclick="location.href =`<%= consumerCreateAccountLink %>`" style="font-size: 1.2rem;font-weight: bold;line-height: normal;letter-spacing: normal;">
+                    <%= consumerText %>
+                </button>
+            </div>
+            <div class="form-group" style=" display: flex; justify-content: center; ">
+                <button id="signupTravelProf" class="btn btn-secondary mt-3 mx-5" onclick="location.href`{<%= professionalCreateAccountLink %>}`" style="font-size: 1.2rem;font-weight: bold;line-height: normal;letter-spacing: normal;">
+                    <%= professionalText %>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>-->

@@ -1,0 +1,42 @@
+﻿<script id="itinerary-view-template" type="text/template">
+	<header class="section-header">
+		<% if (isModal) { %>
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<% } %>
+		<h4 class="section-title"><i class="fa fa-list-ul"></i> <%= caption %></h4>
+	</header>
+	<div class="section-description margin-modal-header padded row" style="<%= showDateSelector() %>">
+		<div class="col-xs-12 col-sm-6 mobile-col">
+			<select class="form-control mobile-select">
+				<% if (shownDates() && shownDates().length > 0) { %>
+					<% _.each(tourPackageDetail, function(tourDetail)  { %>
+					<option data-tourId="<%= tourDetail.tourDateId %>" data-neoId="<%= tourDetail.neoId %>" value="<%= tourDetail.tourDateId %>"><%= tourDetail.date %></option>
+					<% }); %>
+				<% } else { %>
+					<% _(tourDates()).each(function(groupEl) { %>
+					<optgroup label="<%= groupEl.get('year') %>">
+						<% _(groupEl.get('tourDates').models).each(function(dateEl) { %>
+						<option data-tourId="<%= dateEl.get('tourId') %>" data-neoId="<%= dateEl.get('neoId') %>" value="<%= dateEl.get('tourId') %>"><%= dateEl.get('dateView') %></option>
+						<% }); %>
+					</optgroup>
+					<% }); %>
+				<% } %>
+			</select>
+		</div>
+		<div class ="col-xs-12 col-sm-6 mobile-col">
+			<% if (isBookingAvailable) { %>
+			<a class="btn btn-primary btn-block hidden-xs"><%= bookCaption %></a>
+			<br>
+			<% } else if (showTourDetails()) { %>
+			<a class="btn btn-primary btn-block hidden-sm hidden-xs mobile-btn-size"><%= tourDetailsCaption %></a>
+			<a class="btn btn-primary btn-block hidden-lg hidden-md mobile-btn-size"><%= tourDetailsCaptionMobile %></a>
+			<br>
+			<% } %>
+		</div>
+	</div>
+	<div class="padded">
+		<div class="timeline">
+			<ol></ol>
+		</div>
+	</div>
+</script>

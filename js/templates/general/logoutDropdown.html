@@ -1,0 +1,11 @@
+<script id="logout-dropdown-template" type="text/template">
+    <li role="presentation"><a role="menuitem" tabindex="-1" style="font-size:1.5rem" href="javascript:void(0);" id="<%= logoutButtonId %>"><%= logoutText %></a></li>
+    <% if (links != null) { %>
+        <% for (var i = 0; i < links.length; i++) {  %>
+            <% var link = links[i]; %>
+            <li>
+                <a style="font-size:1.5rem" href="<%= link.url %>" target="_blank"><%= link.text %></a>
+            </li>
+        <% } %>
+    <% } %>
+</script>

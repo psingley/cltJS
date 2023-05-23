@@ -1,0 +1,27 @@
+<script type="text/template" id="searchResult-template">
+	<% if(hasBlogImage()) { %>
+	<div class="post-image">
+		<a href="<%= urlWithHash() %>" class="scale-thumbnail"><img src="<%= imageUrl %>" alt=""></a>
+	</div>
+	<% } %>
+	<div class="post-content">
+		<header class="post-header">
+			<small><%= formattedDate() %></small>
+			<h3 class="post-title">
+				<a href="<%= urlWithHash() %>"><%= title %></a>
+			</h3>
+		</header>
+		<p><%= summary %>
+		
+			<a href="<%= urlWithHash() %>" class="read-more"><%= readMoreText %> <i class="fa fa-long-arrow-right"></i></a>
+		</p>
+	</div>
+
+	<% if(hasTags()) { %>
+	<div class="post-tags">
+		<% _.each(tags,function(tag){ %>
+		<a class="post-tag" href="#q/posttags=<%= tag %>"><%= tag %></a>
+		<% }) %>
+	</div>
+	<% } %>
+</script>

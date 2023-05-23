@@ -1,0 +1,67 @@
+<script id="feefo-service-template" type="text/template">
+	<header class="review-header">
+		<time class="review-date" datetime="<%= last_updated_date %>">
+			<%= getDateFormatted() %>
+		</time>
+		<h4 class="review-title"><%= title %></h4>
+	</header>
+	<div class="review-body">
+		<ul class="review-topics list-unstyled">
+			<li class="review-topic">
+				<header class="review-topic-header">
+					<div class="review-topic-title"><%= service %></div>
+					<div class="review-topic-rating">
+						<% if(serviceRating === "1") { %>
+								<div>
+									<i class="fa fa-minus-circle"></i><i class="fa fa-minus-circle"></i>
+								</div>
+								<small><%= bad %></small>
+								<% }
+							if(serviceRating === "2" || serviceRating === "3") { %>
+								<div>
+									<i class="fa fa-minus-circle"></i>
+								</div>
+								<small><%= poor %></small>
+							<% }
+							if(serviceRating === "4") { %>
+								<div>
+									<i class="fa fa-plus-circle"></i>
+								</div>
+								<small><%= good %></small>
+							<% }
+							if(serviceRating === "5") { %>
+								<div>
+									<i class="fa fa-plus-circle"></i><i class="fa fa-plus-circle"></i>
+								</div>
+								<small><%= excellent %></small>
+							<% } %>
+					</div>
+				</header>
+				<div class="review-topic-body">
+					<p><%= serviceComment %></p>
+				</div>
+			</li>
+			<li class="review-media">
+				<% if(serviceMedia) { %>
+				<% for(var i = 0; i < serviceMedia.length; i++) {%>
+					<% if (serviceMedia[i].type === 'VIDEO') { %>
+						<a href="<%= serviceMedia[i].url %>" data-toggle="lightbox" data-gallery="<%= serviceId %>-gallery">
+							<img src="<%= serviceMedia[i].thumbnail %>">
+							<div class="video-overlay"></div>
+						</a>
+					<% } else { %>
+						<a href="<%= serviceMedia[i].url %>" data-toggle="lightbox" data-gallery="<%= serviceId %>-gallery" data-type="image">
+							<img src="<%= serviceMedia[i].url %>">
+						</a>
+					<% } %>
+				<% }} %>
+			</li>
+		</ul>
+	<% if(showMerchantServiceComment()){ %>
+			<div class="review-response">
+				<p><%= merchantServiceComment %></p>
+				<em><%= colletteSupport %></em>
+			</div>
+		<% } %>
+	</div>
+</script>

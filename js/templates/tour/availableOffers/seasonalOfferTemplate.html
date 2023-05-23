@@ -1,0 +1,7 @@
+<script type="text/template" id="tour-offer-template">
+	<div class="tag seasonal no-flag" data-toggle="modal" data-target="#seasonal-offer-modal">
+		<i class="fa fa-tag"></i><%= seasonalOfferText %>
+	</div>
+	<p><%= seasonalOfferSummary() %></p>
+	<h4><%= useOfferCodeText %>: <%= seasonalOffer.vanityCode() %></h4>
+</script>

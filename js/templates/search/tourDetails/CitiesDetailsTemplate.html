@@ -1,0 +1,28 @@
+<script id="city-view-template" type="text/template">
+	<header class="section-header">
+		<h4 class="section-title"><i class="fa fa-building-o"></i> <%= caption %></h4>
+	</header>
+
+	<div class="section-description padded">
+		<select class="form-control">
+			<!--<option value="-1">Select Travel Dates</option>-->
+			<% _(tourDates).each(function(groupEl) { %>
+			<optgroup label="<%= groupEl.get('year') %>">
+				<% _(groupEl.get('tourDates').models).each(function(dateEl) { %>
+				<option data-tourId="<%= dateEl.get('tourId') %>" data-neoId="<%= dateEl.get('neoId') %>" value="<%= dateEl.get('tourId') %>"><%= dateEl.get('dateView') %></option>
+				<% }); %>
+			</optgroup>
+			<% }); %>
+		</select>
+	</div>
+
+	<% if (isAgent()) { %>
+	<div class="section-description">
+		<p><%= message %></p>
+	</div>
+	<% } %>
+
+	<div class="padded">
+		<ul class="tag-cloud"></ul>
+	</div>
+</script>

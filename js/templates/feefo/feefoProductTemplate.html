@@ -1,0 +1,72 @@
+<script id="feefo-product-template" type="text/template">
+		<header class="review-header">
+			<time class="review-date" datetime="<%= last_updated_date %>">
+				<%= getDateFormatted() %>
+			</time>
+			<h4 class="review-title"><%= title %></h4>
+		</header>
+		<div class="review-body">
+			<ul class="review-topics list-unstyled">
+				<li class="review-topic">
+					<header class="review-topic-header">
+						<div class="review-topic-title"><%= tour %></div>
+						<div class="review-topic-rating">
+							<% if(productRating === "1") { %>
+									<div>
+										<i class="fa fa-minus-circle"></i><i class="fa fa-minus-circle"></i>
+									</div>
+									<small><%= bad %></small>
+									<% }
+								if(productRating === "2" || productRating === "3") { %>
+									<div>
+										<i class="fa fa-minus-circle"></i>
+									</div>
+									<small><%= poor %></small>
+								<% }
+								if(productRating === "4") { %>
+									<div>
+										<i class="fa fa-plus-circle"></i>
+									</div>
+									<small><%= good %></small>
+								<% }
+								if(productRating === "5") { %>
+									<div>
+										<i class="fa fa-plus-circle"></i><i class="fa fa-plus-circle"></i>
+									</div>
+									<small><%= excellent %></small>
+								<% } %>
+						</div>
+					</header>
+					<div class="review-topic-body">
+						<p><%= productComment %></p>
+					</div>
+				</li>
+				<li class="review-media">
+					<% if(productMedia) { %>
+					<% for(var i = 0; i < productMedia.length; i++) {%>
+						<% if (productMedia[i].type === 'VIDEO') { %>
+							<a href="<%= productMedia[i].url %>" data-toggle="lightbox" data-gallery="<%= productId %>-gallery">
+								<img src="<%= productMedia[i].thumbnail %>">
+								<div class="video-overlay"></div>
+							</a>
+						<% } else { %>
+							<a href="<%= productMedia[i].url %>" data-toggle="lightbox" data-gallery="<%= productId %>-gallery" data-type="image">
+								<img src="<%= productMedia[i].url %>">
+							</a>
+						<% } %>
+					<% }} %>
+				</li>
+			</ul>
+			<% if(showMerchantServiceComment() || showMerchantProductComment()){ %>
+				<div class="review-response">
+					<% if(showMerchantServiceComment()) {	%>
+						<p><%= merchantServiceComment %></p>
+					<%}%>
+					<% if(showMerchantProductComment()) {	%>
+						<p><%= merchantProductComment %></p>
+					<%}%>
+					<em><%= colletteSupport %></em>
+				</div>
+			<% } %>
+		</div>
+</script>

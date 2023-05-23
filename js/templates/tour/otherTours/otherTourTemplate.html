@@ -1,0 +1,7 @@
+<script type="text/template" id="other-tours-template">
+        <a class="recommendedTour" data-id="<%= id %>" href="<%= url %>"><img class="otherTourImage" src="<%= imageUrl() %>" alt="<%- imageAltTag() %>"></a>
+        <h4><%= title %></h4>
+        <%= length.totalDays %> <%= daysPhrase %> &#8226; <%= meals.totalMeals %> <%= mealsPhrase %>
+        <div class="description"><%= summary %></div>
+        <a href="<%= url %>" data-id="<%= id %>" class="btn btn-primary recommendedTour"><%= urlTitle %></a>
+</script>

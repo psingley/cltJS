@@ -1,0 +1,11 @@
+<script id="city-item-view-template" type="text/template">
+	<% if(isAgent()){ %>
+		<a href="<%= searchUrl %>">
+			<%= title %>
+		</a>
+	<% } else { %>
+		<span>
+			<%= title %>
+		</span>
+	<% } %>
+</script>

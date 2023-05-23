@@ -1,0 +1,9 @@
+<script type="text/template" id="tour-option-template">
+        <div class="title"><%= fullTitle %></div>
+        <div class="blurb">
+            <%= summary %>
+        <% if(fullExcursionOnlyAvailable) {%>
+        <p><i>*<%= fullExcursionOnlyAvailable %>.</i></p>
+        <%} %>
+        </div>
+</script>

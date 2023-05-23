@@ -1,0 +1,103 @@
+<script type="text/template" id="additional-info-template">
+    <div class="subheader additional_information clearfix">
+        <div class="left_col">
+            <%= additionalInfoText %>
+        </div>
+        <div class="right_col">
+            <a href="#" class="arrow_down close">More Details</a>
+        </div>
+    </div>
+    <div class="additional_information">
+        <div class="pad">
+            <p><%= additionalInfoAbstractText %></p>
+        </div>
+        <div class="expanded">
+            <div class="pad contact_info">
+                <div class="input_row inline clearfix">
+                    <label><%= passportInfoText %></label>
+                    <input value="<%=  passportInfo.number %>" type="text" class="large passport_info">
+                    <label class="long"><%= countryOfIssueText %></label>
+                    <input class="country medium" name="countryOfIssue" type="text"/>
+                    <input type="hidden" data-id="" class="countryId" />
+                </div>
+                <div class="input_row inline clearfix">
+                    <label class="long"><%= expirationDateText %></label>
+                    <input type="text" class="large expiration_date">
+                    <label class="long"><%= countryOfCitText %></label>
+                    <input value="" class="country_of_citizenship medium" name="countryOfCitizenship" type="text"/>
+                    <input type="hidden" class="country_of_citizenshipId" value=""" />
+                </div>
+                <div class="input_row inline clearfix">
+                    <label><%= issueDateText %></label>
+                    <input type="text" class="large issue_date">
+                    <label><%= authorityText %></label>
+                    <input type="text" class="medium authority">
+                </div>
+                <div class="input_row inline clearfix">
+                    <label class="long"><%= emergencyContactNameText %> </label>
+                    <input type="text" class="large emergency_name">
+                    <label class="long"><%= emergencyContactPhoneText %></label>
+                    <input type="text" class="medium emergency_phone">
+                </div>
+                <div class="input_row inline clearfix">
+                    <label class="long"><%= membershipTypeText %></label>
+                    <select class="membership_type large">
+                        <option data-id="" value=""></option>
+                    </select>
+                    <label><%= numberText %></label>
+                    <input type="text" class="medium number">
+                </div>
+            </div>
+
+            <div class="subheader clearfix">
+                <div class="left_col">
+                    <%= airPreferencesText %>
+                </div>
+                <div class="right_col">
+                </div>
+            </div>
+            <div class="pad air_info">
+                <div class="input_row clearfix">
+                    <label><input type="checkbox" class="wheelchair_assistance"/> <%= wheelChairAssistanceText %>
+                    </label>
+                </div>
+                <div class="input_row inline clearfix">
+                    <label><%= airlineText %></label>
+                    <input type="text" class="large airline">
+                    <input type="hidden" class="airlineId" />
+                    <label><%= seatText %></label>
+                    <select class="medium seat">
+
+                    </select>
+                </div>
+                <div class="input_row inline clearfix">
+                    <label class="long"><%= frequentFlyerNumberText %> </label>
+                    <input type="text" class="large frequent_flyer_no">
+                    <label><%= mealText %></label>
+                    <select class="medium meal">
+
+                    </select>
+                </div>
+            </div>
+            <div class="subheader clearfix">
+                <div class="left_col">
+                    <%= roomRequestsText %>
+                </div>
+                <div class="right_col">
+                </div>
+            </div>
+            <div class="pad room_info">
+                <div class="input_row inline clearfix roomRequestOptions">
+                </div>
+
+                <div class="input_row inline textareas clearfix">
+                    <label><%= medicationInfoText%></label>
+                    <textarea class="large medications"></textarea>
+                    <label><%= dietaryRestrictionsText %></label>
+                    <textarea class="large dietary_restrictions"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</script>

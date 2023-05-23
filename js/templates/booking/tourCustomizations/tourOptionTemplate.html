@@ -1,0 +1,35 @@
+<script type="text/template" id="tour-option-template">
+	<label>
+		<div class="input_col checkbox"><input data-id="<%= id %>" class="packageUpgrade_checkbox" type="checkbox" <%= isChecked() %>></div>
+		<div class="input_col description_col tourOptionDescription">
+			<strong><%= serviceDateFormatted %> : <%= contractName %></strong>
+			<p>
+				<%= summary %>
+				<a href="#" class="tour_option_details_link" title="More Details">
+					<span><%= moreDetailsText %></span>
+				</a>
+			</p>
+		</div>
+	</label>
+
+	<div class="input_col price_col"><%= price.toString().formatPrice() %></div>
+	<div class="input_col persons_col">
+		<div class="travelerCheckBoxes">
+		</div>
+	</div>
+
+	<div class="input_col tour_option_details">
+		<%= cityLabel %>: <%= cityText %>
+		<br/><%=durationText%>
+		<% if(transportationIncluded){ %>
+			<br><%=transportationIncludedLabel%>
+		<% } %>
+		<br><%= description %>
+		<% if(showComments){ %>
+			<br><%=comments%>
+		<% } %>
+		<% if(showNotes){ %>
+			<br><%=notes%>
+		<% } %>
+	</div>
+</script>

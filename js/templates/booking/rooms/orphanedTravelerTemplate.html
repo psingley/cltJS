@@ -1,0 +1,22 @@
+<script type="text/template" id="traveler-template">
+    <div class="input_group traveler">
+        <div class="input_row inline name">
+            <label><%= travelerText %> <%= travelerIndex %></label>
+            <label class="travelerName" type="text" data-id="<%= id %>" ><%= firstName %></label>
+        </div>
+        <div class="input_row inline price">
+            <label><%= passengerType.name %></label>
+            <span><%= personPrice %></span>
+            <a href="#" data-cid="<%= cid %>" class="delete">&times;</a>
+        </div>
+        <div class="input_row inline">
+            <label><%= assignToRoomText %></label>
+            <select class="rooms">
+
+            </select>
+        </div>
+        <div class="input_row inline">
+            <a href="#" data-cid="<%= cid %>" class="assign"><%= assignText %></a>
+        </div>
+    </div>
+</script>

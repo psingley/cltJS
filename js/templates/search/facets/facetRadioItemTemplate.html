@@ -1,0 +1,12 @@
+<script id="facet-radio-item-template" type="text/template">
+	<input id="<%= name %>" name="<%= fieldName() %>" type="checkbox" value="<%= name %>">
+	<span class="filter-checkbox-text"><%= badgeTitle() %></span>
+	<span class="filter-results"><%= count %></span>
+
+	<% var isStarsFacet = starsFacet(); %>
+	<% if(starsFacet()) { %><% if(showReviews()) { %>
+	<% for(var i=1; i<= name ; i++) {  %>
+	<i class="fa fa-star star-rating"></i><% } %>
+	<% } %>
+	<% }%>
+</script>

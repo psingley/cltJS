@@ -1,0 +1,14 @@
+<script id="features-view-template" type="text/template">
+	<header class="section-header">
+		<h4 class="section-title"><i class="fa fa-map-marker"></i> <%= caption %></h4>
+	</header>
+	<% if (isAgent()) { %>
+	<div class="section-description">
+		<p><%= message %></p>
+	</div>
+	<% } %>
+	<div class="padded">
+		<ul class="tag-cloud"></ul>
+	</div>
+
+</script>

@@ -1,0 +1,41 @@
+<script type="text/template" id="room-template">
+    <div class="booking rooms_table">
+        <div class="input_row headers">
+            <div class="input_col room_col">
+                <label><%= roomText %> <%= roomIndex %></label>
+            </div>
+            <div class="input_col adult_col">
+                <label><%= adultText %></label>
+            </div>
+            <div class="input_col child_col">
+                <label><%= childText %></label>
+            </div>
+            <div class="input_col room_type_col">
+                <label><%= roomTypeText %></label>
+            </div>
+            <div class="input_col">
+                <label><a href="#" data-cid="<%= cid %>" class="delete removeRoom">&times;</a></label>
+            </div>
+        </div>
+        <div class="input_row">
+            <div class="input_col room_col">
+            </div>
+            <div class="input_col adult_col">
+                <select class="adultsDropDown">
+                    <%= getAdultsList() %>
+                </select>
+            </div>
+            <div class="input_col child_col">
+                <select class="childrenDropDown">
+                    <%= getChildrenList() %>
+                </select>
+            </div>
+            <div class="input_col room_type_col">
+                <span class="roomGuestConfig"></span>
+            </div>
+        </div>
+        <fieldset class="travelersListContent">
+        </fieldset>
+        <div class="messages"></div>
+    </div>
+</script>

@@ -1,0 +1,14 @@
+<script type="text/template" id="tour-extension-full-template">
+    <div class="header clearfix">
+        <strong><%=formattedTitle%></strong>
+        <p>
+            <img src="<%= getDetailImageUrl(detailImage, image) %>" alt="<%= getAltTag(detailImage, image) %>" style="float:left" />
+            <%= description %>
+            <% if(showNotes()) { %>
+                <br/><br/>
+                <%= tourNotesText %>
+                <%= getNotes() %>
+            <% } %>
+        </p>
+    </div>
+</script>
