@@ -10,8 +10,8 @@ os.makedirs("public/images", exist_ok=True)
 os.makedirs("public/audios", exist_ok=True)
 os.makedirs("public/videos", exist_ok=True)
 
-HUGGINGFACE_TOKEN = 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
-OPENAI_KEY = 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
+HUGGINGFACE_TOKEN = os.environ.get("HUGGINGFACE_TOKEN")
+OPENAI_KEY = os.environ.get("OPENAI_KEY")
 
 
 class Client:
